@@ -1,7 +1,3 @@
-export function NotFoundPage() {
-  return (
-    <main>
-      <h1>404</h1>
-    </main>
-  );
-}
+import { NotFoundPage } from 'domains/404';
+
+export { NotFoundPage };

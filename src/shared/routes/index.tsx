@@ -5,12 +5,13 @@ import {
   Routes as Switch
 } from 'react-router-dom';
 
-import { Layout } from 'app/layout';
-import { NotFoundPage } from 'pages/404';
-
 import { PAGE_ROUTES } from 'shared/routes/page-routes';
 import { NOT_FOUND_ROUTE } from 'shared/routes/route-path';
 import { ScrollToTop } from 'shared/routes/scroll-to-top';
+
+import { Layout } from 'app/layout';
+
+import { NotFoundPage } from 'pages/404';
 
 export function Routes() {
   return (

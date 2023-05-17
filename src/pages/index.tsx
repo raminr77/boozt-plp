@@ -1,7 +1,3 @@
-export function IndexPage() {
-  return (
-    <div>
-      <div>Home</div>
-    </div>
-  );
-}
+import { IndexPage } from 'domains/index';
+
+export { IndexPage };
