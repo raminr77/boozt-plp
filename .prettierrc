@@ -1,0 +1,19 @@
+{
+    "semi": true,
+    "tabWidth": 2,
+    "useTabs": false,
+    "printWidth": 90,
+    "singleQuote": true,
+    "jsxSelfClosing": true,
+    "jsxSingleQuote": true,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "requireConfig": false,
+    "trailingComma": "none",
+    "editor.formatOnSave": true,
+    "importOrderSeparation": true,
+    "html.format.wrapLineLength": 80,
+    "importOrderSortSpecifiers": true,
+    "html.format.wrapAttributes": "force-expand-multiline",
+    "importOrder": ["^react","<THIRD_PARTY_MODULES>", "^[*/*]", "^[./*]", "^[*.module.scss]", "^[*.css]"]
+}

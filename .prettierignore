@@ -1,0 +1,13 @@
+*.svg
+*.png
+*.jpg
+/src/**/*.html
+/public/*.html
+/src/**/*.webmanifest
+
+# minify css
+/src/shared/styles/index.min.css
+
+node_modules
+build
+coverage
