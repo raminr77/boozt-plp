@@ -16,7 +16,13 @@ export function NotFoundPage() {
       )}
     >
       <div className='flex flex-col'>
-        <img width={46} height={46} src={NOT_FOUND_IMAGE} alt='404' className='mb-8' />
+        <img
+          width={46}
+          height={46}
+          src={NOT_FOUND_IMAGE}
+          alt='404'
+          className='mb-8 dark:invert opacity-70'
+        />
         <h1 className='text-2xl font-bold mb-2'>404 - Page Not Found</h1>
         <p>This page you requested does not exist.</p>
 

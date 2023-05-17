@@ -3,7 +3,10 @@ import classNames from 'classnames';
 import { Footer } from 'app/components/footer';
 import { Header } from 'app/components/header';
 
-export function Layout({ children, className }: GCommonCompnentPropertiesWithChildren) {
+export function MainLayout({
+  children,
+  className
+}: GCommonCompnentPropertiesWithChildren) {
   return (
     <div
       className={classNames(
