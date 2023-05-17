@@ -7,7 +7,7 @@ export function Layout({ children, className }: GCommonCompnentPropertiesWithChi
   return (
     <div
       className={classNames(
-        'select-none flex flex-col text-black dark:bg-gray-800 dark:text-white min-h-screen',
+        'select-none flex flex-col items-center text-black dark:bg-gray-800 dark:text-white min-h-screen',
         className
       )}
     >
