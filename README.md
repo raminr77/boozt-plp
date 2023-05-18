@@ -29,6 +29,7 @@ Currently, You can see this project by [Click Here](http://raminrezaei.ir/boozt-
 - You Should have `NodeJs` > 18.12 with a JavaScript package manager like `Yarn` ( Recommended ) or `npm` on your system.
 - Clone or download the last version of this project.
 - Create a DataBase (Schema) on your MySql with the `boozt_db` name.
+- Load project tables from `product_list.sql` file on the root.
 - Open this directory with your terminal or command line.
 - Run `npm install` Or `yarn` for installing dependencies.
 - Run `npm run back-end` to run the back-end project.
