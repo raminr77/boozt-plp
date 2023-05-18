@@ -1,8 +1,10 @@
 import { DATA } from 'data/data';
+import { titleGenerator } from 'shared/utils/title-generator';
 
 import { PlpLayout } from 'app/layout/plp-layout';
 
 export function IndexPage() {
+  titleGenerator();
   const onSearch = (value: string) => console.log(value);
   const onPageChange = (page: number) => console.log(page);
   const onSortChange = (sortId: number) => console.log(sortId);

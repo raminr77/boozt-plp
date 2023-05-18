@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom';
 
 import classNames from 'classnames';
 import { INDEX_PAGE_ROUTE } from 'shared/routes/route-path';
+import { titleGenerator } from 'shared/utils/title-generator';
 
 import styles from './404.module.scss';
 
 import NOT_FOUND_IMAGE from 'shared/static/images/404.png';
 
 export function NotFoundPage() {
+  titleGenerator('Not Found - 404');
   return (
     <main
       className={classNames(
