@@ -120,7 +120,7 @@ export function PlpLayout({
 
       <div
         className={classNames(
-          'overflow-hidden w-full border border-solid border-gray-100 dark:border-gray-700 dark:bg-gray-700 bg-gray-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 relative',
+          'overflow-hidden w-full border border-solid border-gray-100 dark:border-gray-700 dark:bg-gray-700 bg-gray-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 relative',
           styles['PlpLayout__products-container'],
           {
             'pointer-events-none': loading

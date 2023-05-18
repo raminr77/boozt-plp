@@ -13,7 +13,7 @@ export function IndexPage() {
       <PlpLayout
         pagination={{
           page: 1,
-          pageSize: 10,
+          pageSize: 12,
           siblingCount: 1,
           totalCount: DATA.length
         }}
@@ -22,7 +22,7 @@ export function IndexPage() {
         length={DATA.length}
         onPageChange={onPageChange}
         onSortChange={onSortChange}
-        products={DATA.slice(0, 20)}
+        products={DATA.slice(0, 12)}
         title="All Boozt's Products"
       />
     </main>

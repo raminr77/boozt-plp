@@ -19,7 +19,7 @@ export function PlpLayoutPagination({ onPageChange, pagination }: Props) {
   }
 
   return (
-    <div className='flex items-center justify-center mb-10 mt-5 gap-x-2'>
+    <div className='flex items-center justify-center mb-10 mt-5 gap-x-2 scale-75 sm:scale-100'>
       <button
         onClick={() => onPageChange(page - 1 > 0 ? page - 1 : 1)}
         className={classNames(buttonClasses, {
