@@ -4,10 +4,12 @@ import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import qs from 'qs';
 import { ProductCard } from 'shared/components/product-card';
+import { PAGINATION_DATA } from 'shared/constants/pagination';
 import { useScrollPosition } from 'shared/hooks/use-scroll-position';
 import { animator } from 'shared/utils/animator';
 import { debounce } from 'shared/utils/debounce';
 
+import { PlpLayoutItemsCounter } from './plp-layout-items-counter';
 import { PlpLayoutLoading } from './plp-layout-loading';
 import { PlpLayoutPagination } from './plp-layout-pagination';
 import { PlpLayoutSort } from './plp-layout-sort';
@@ -94,11 +96,7 @@ export function PlpLayout({
 
         <div className='w-full flex items-center justify-between'>
           <PlpLayoutSort onSortChange={onSortChange} />
-          {length && (
-            <p className='text-sm text-gray-400'>
-              <span className='font-bold'>{length}</span> Products
-            </p>
-          )}
+          <PlpLayoutItemsCounter length={length} pagination={pagination} />
         </div>
       </div>
 
@@ -110,11 +108,7 @@ export function PlpLayout({
           )}
         >
           <PlpLayoutSort onSortChange={onSortChange} />
-          {length && (
-            <p className='text-sm text-gray-400'>
-              <span className='font-bold'>{length}</span> Products
-            </p>
-          )}
+          <PlpLayoutItemsCounter length={length} pagination={pagination} />
         </div>
       )}
 
