@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { PAGINATION_DATA } from 'shared/constants/pagination';
 import { DOTS, usePagination } from 'shared/hooks/use-pagination';
 
 interface Props extends GCommonCompnentProperties {
@@ -6,15 +7,16 @@ interface Props extends GCommonCompnentProperties {
   onPageChange: (value: number) => void;
 }
 export function PlpLayoutPagination({ onPageChange, pagination }: Props) {
-  const { page } = pagination || {};
+  const { page, count, limit } = pagination || {};
 
   const paginationRange = usePagination(pagination) || [];
   const lastPage = +paginationRange[paginationRange.length - 1];
 
+  const paginationLimit = limit || PAGINATION_DATA.PAGE_SIZE;
   const buttonClasses =
     'outline-none bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-900 leading-10 rounded-lg px-3 text-sm duration-300';
 
-  if (!page) {
+  if (count <= paginationLimit) {
     return null;
   }
 

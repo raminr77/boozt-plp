@@ -45,7 +45,7 @@ export function PlpLayoutSort({ onSortChange }: Props) {
 
   return (
     <div className='flex items-center'>
-      <button className='font-bold mr-2 flex items-center' onClick={showSortModal}>
+      <button className='mr-2 flex items-center' onClick={showSortModal}>
         <img
           alt=''
           width={24}
@@ -65,7 +65,7 @@ export function PlpLayoutSort({ onSortChange }: Props) {
             key={id}
             onClick={() => sortAction(id)}
             className={classNames(
-              'leading-8 cursor-pointer text-md px-3 bg-gray-100 dark:bg-gray-700 rounded-lg duration-300',
+              'leading-8 cursor-pointer text-md px-3 bg-gray-100 dark:bg-gray-700 rounded-lg',
               {
                 'text-red-500 font-bold pointer-events-none': defaultSort === id,
                 'dark:text-white hover:bg-gray-200 dark:hover:bg-gray-900':

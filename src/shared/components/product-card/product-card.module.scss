@@ -1,11 +1,13 @@
 .ProductCard {
     &__container {
-        &:hover {
-            z-index: 1;
-            filter: drop-shadow(0 0 20px rgba(0,0,0,0.1));
+        @media screen and (min-width: 640px) {
+            &:hover {
+                z-index: 1;
+                filter: drop-shadow(0 0 20px rgba(0,0,0,0.1));
 
-            img {
-                transform: scale(0.8);
+                img {
+                    transform: scale(0.8);
+                }
             }
         }
     }
