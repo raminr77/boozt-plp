@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import classNames from 'classnames';
+import qs from 'qs';
 import { ProductCard } from 'shared/components/product-card';
 import { useScrollPosition } from 'shared/hooks/use-scroll-position';
 import { animator } from 'shared/utils/animator';
@@ -12,13 +14,11 @@ import { PlpLayoutSort } from './plp-layout-sort';
 import styles from './plp-layout.module.scss';
 
 interface Props extends GCommonCompnentProperties {
-  page?: number;
   title: string;
   length: number;
   loading?: boolean;
-  lastPage?: number;
   products: GProduct[];
-  defaultSortId?: number;
+  pagination: GPagination;
   onSearch: (value: string) => void;
   onPageChange: (value: number) => void;
   onSortChange: (value: number) => void;
@@ -26,19 +26,44 @@ interface Props extends GCommonCompnentProperties {
 
 export function PlpLayout({
   title,
-  page = 1,
   products,
   onSearch,
+  pagination,
   length = 0,
-  lastPage = 1,
   onPageChange,
   onSortChange,
-  loading = false,
-  defaultSortId = 1
+  loading = false
 }: Props) {
   const [showStickySort, setShowStickySort] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams({});
+  const [search, setSearch] = useState(searchParams.get('q') || '');
 
-  const searchAction = debounce(onSearch);
+  const searchAction = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(target.value);
+    debounce(() => {
+      setSearchParams({
+        ...qs.parse(window.location.search.substring(1)),
+        q: target.value
+      });
+      onSearch(target.value);
+    }, 1000)();
+  };
+
+  const pageAction = (page: number) => {
+    setSearchParams({
+      ...qs.parse(window.location.search.substring(1)),
+      page: page.toString()
+    });
+    onPageChange(page);
+  };
+
+  useEffect(() => {
+    if (searchParams.get('page')) {
+      const currentPage = searchParams.get('page');
+      pagination.page = currentPage !== null ? +currentPage : 1;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   useScrollPosition(({ prevPos, currPos }) => {
     const isShow = -1 * currPos.y > 300;
@@ -61,13 +86,14 @@ export function PlpLayout({
       <div className='w-full flex flex-col items-center justify-center mb-2 gap-y-12'>
         <input
           type='text'
-          onChange={(e) => searchAction(e.target.value)}
+          value={search}
+          onChange={searchAction}
           placeholder='Search For What You Like In Boozt ...'
           className='text-center text-xl outline-none border-b bg-transparent dark:text-white focus:border-black dark:focus:border-white duration-500 leading-10 border-solid w-full max-w-xl border-gray-200 dark:border-gray-600'
         />
 
         <div className='w-full flex items-center justify-between'>
-          <PlpLayoutSort defaultSortId={defaultSortId} onSortChange={onSortChange} />
+          <PlpLayoutSort onSortChange={onSortChange} />
           {length && (
             <p className='text-sm text-gray-400'>
               <span className='font-bold'>{length}</span> Products
@@ -83,7 +109,7 @@ export function PlpLayout({
             animator({ name: 'fadeInDown' })
           )}
         >
-          <PlpLayoutSort defaultSortId={defaultSortId} onSortChange={onSortChange} />
+          <PlpLayoutSort onSortChange={onSortChange} />
           {length && (
             <p className='text-sm text-gray-400'>
               <span className='font-bold'>{length}</span> Products
@@ -108,7 +134,7 @@ export function PlpLayout({
         ))}
       </div>
 
-      <PlpLayoutPagination page={page} lastPage={lastPage} onPageChange={onPageChange} />
+      <PlpLayoutPagination pagination={pagination} onPageChange={pageAction} />
     </section>
   );
 }

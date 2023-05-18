@@ -1,13 +1,23 @@
 import classNames from 'classnames';
+import { DOTS, usePagination } from 'shared/hooks/use-pagination';
 
 interface Props extends GCommonCompnentProperties {
-  page: number;
-  lastPage: number;
+  pagination: GPagination;
   onPageChange: (value: number) => void;
 }
-export function PlpLayoutPagination({ onPageChange, page, lastPage }: Props) {
+export function PlpLayoutPagination({ onPageChange, pagination }: Props) {
+  const { page } = pagination || {};
+
+  const paginationRange = usePagination(pagination) || [];
+  const lastPage = +paginationRange[paginationRange.length - 1];
+
   const buttonClasses =
     'outline-none bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-900 leading-10 rounded-lg px-3 text-sm duration-300';
+
+  if (!page) {
+    return null;
+  }
+
   return (
     <div className='flex items-center justify-center mb-10 mt-5 gap-x-2'>
       <button
@@ -19,18 +29,30 @@ export function PlpLayoutPagination({ onPageChange, page, lastPage }: Props) {
         Prev
       </button>
 
-      {[1, 2, 3, 4, 5].map((item) => (
-        <button
-          key={item}
-          onClick={() => onPageChange(item)}
-          className={classNames(buttonClasses, {
-            'hover:bg-red-500 dark:hover:bg-red-500 bg-red-500 dark:bg-red-500 font-bold text-white':
-              page === item
-          })}
-        >
-          {item}
-        </button>
-      ))}
+      {paginationRange.map((pageNumber: string | number, index: number) => {
+        if (pageNumber.toString() === DOTS) {
+          return (
+            <div
+              key={pageNumber.toString() + index}
+              className='p-2 flex items-center leading-7'
+            >
+              {DOTS}
+            </div>
+          );
+        }
+        return (
+          <button
+            key={pageNumber}
+            onClick={() => onPageChange(+pageNumber)}
+            className={classNames(buttonClasses, {
+              'hover:bg-red-500 dark:hover:bg-red-500 bg-red-500 dark:bg-red-500 font-bold text-white pointer-events-none':
+                page === pageNumber
+            })}
+          >
+            {pageNumber}
+          </button>
+        );
+      })}
 
       <button
         onClick={() => onPageChange(page + 1 > lastPage ? lastPage : page + 1)}

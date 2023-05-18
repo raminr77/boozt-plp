@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import classNames from 'classnames';
+import qs from 'qs';
 import { SORT_OPTIONS } from 'shared/constants/sort-options';
 
 import { PlpLayoutSortModal } from './plp-layout-sort-modal';
@@ -8,15 +10,23 @@ import { PlpLayoutSortModal } from './plp-layout-sort-modal';
 import SORT_ICON_IMAGE from 'shared/static/images/sort.png';
 
 interface Props extends GCommonCompnentProperties {
-  defaultSortId?: number;
   onSortChange: (value: number) => void;
 }
-export function PlpLayoutSort({ defaultSortId = 1, onSortChange }: Props) {
+export function PlpLayoutSort({ onSortChange }: Props) {
   const [showModal, setShowModal] = useState(false);
-  const [defaultSort, setDefaultSort] = useState(defaultSortId);
+  const [searchParams, setSearchParams] = useSearchParams({});
+
+  // This is because it may not be `searchParams` or equal to `null`
+  const defaultSortId = searchParams.get('sort') || 1;
+  const [defaultSort, setDefaultSort] = useState(+defaultSortId);
+
   const sortAction = (sortId: number) => {
     onSortChange(sortId);
     setDefaultSort(sortId);
+    setSearchParams({
+      ...qs.parse(window.location.search.substring(1)),
+      sort: sortId.toString()
+    });
   };
 
   const showSortModal = () => {
@@ -25,6 +35,13 @@ export function PlpLayoutSort({ defaultSortId = 1, onSortChange }: Props) {
     }
     setShowModal(true);
   };
+
+  useEffect(() => {
+    if (searchParams.get('sort')) {
+      const defaultSortId = searchParams.get('sort') || 1;
+      setDefaultSort(+defaultSortId);
+    }
+  }, [searchParams]);
 
   return (
     <div className='flex items-center'>
@@ -50,7 +67,7 @@ export function PlpLayoutSort({ defaultSortId = 1, onSortChange }: Props) {
             className={classNames(
               'leading-8 cursor-pointer text-md px-3 bg-gray-100 dark:bg-gray-700 rounded-lg duration-300',
               {
-                'text-red-500 font-bold': defaultSort === id,
+                'text-red-500 font-bold pointer-events-none': defaultSort === id,
                 'dark:text-white hover:bg-gray-200 dark:hover:bg-gray-900':
                   defaultSort !== id
               }
@@ -63,9 +80,9 @@ export function PlpLayoutSort({ defaultSortId = 1, onSortChange }: Props) {
       </div>
 
       <PlpLayoutSortModal
-        defaultSortId={defaultSort}
         show={showModal}
         sortAction={sortAction}
+        defaultSortId={defaultSort}
         onClose={() => setShowModal(false)}
       />
     </div>

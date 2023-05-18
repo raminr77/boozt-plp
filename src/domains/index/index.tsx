@@ -9,9 +9,13 @@ export function IndexPage() {
   return (
     <main>
       <PlpLayout
-        page={1}
+        pagination={{
+          page: 1,
+          pageSize: 10,
+          siblingCount: 1,
+          totalCount: DATA.length
+        }}
         length={3}
-        lastPage={3}
         loading={false}
         onSearch={onSearch}
         onPageChange={onPageChange}
