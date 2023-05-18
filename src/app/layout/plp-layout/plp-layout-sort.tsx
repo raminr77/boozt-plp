@@ -45,7 +45,10 @@ export function PlpLayoutSort({ onSortChange }: Props) {
 
   return (
     <div className='flex items-center'>
-      <button className='mr-2 flex items-center' onClick={showSortModal}>
+      <button
+        className='mr-2 flex items-center sm:cursor-default'
+        onClick={showSortModal}
+      >
         <img
           alt=''
           width={24}
@@ -53,7 +56,7 @@ export function PlpLayoutSort({ onSortChange }: Props) {
           src={SORT_ICON_IMAGE}
           className='mr-1 dark:invert'
         />
-        <div>Sort:</div>
+        <div className='text-sm'>Sort:</div>
         <span className='block sm:hidden font-bold text-red-500 ml-1 text-sm'>
           {SORT_OPTIONS[defaultSort - 1].title}
         </span>
@@ -65,7 +68,7 @@ export function PlpLayoutSort({ onSortChange }: Props) {
             key={id}
             onClick={() => sortAction(id)}
             className={classNames(
-              'leading-8 cursor-pointer text-md px-3 bg-gray-100 dark:bg-gray-700 rounded-lg',
+              'leading-8 cursor-pointer text-sm px-3 bg-gray-100 dark:bg-gray-700 rounded-lg',
               {
                 'text-red-500 font-bold pointer-events-none': defaultSort === id,
                 'dark:text-white hover:bg-gray-200 dark:hover:bg-gray-900':
