@@ -17,9 +17,9 @@ export function IndexPage() {
           siblingCount: 1,
           totalCount: DATA.length
         }}
-        length={3}
         loading={false}
         onSearch={onSearch}
+        length={DATA.length}
         onPageChange={onPageChange}
         onSortChange={onSortChange}
         products={DATA.slice(0, 20)}
