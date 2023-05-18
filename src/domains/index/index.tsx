@@ -1,4 +1,3 @@
-import { DATA } from 'data/data';
 import { PAGINATION_DATA } from 'shared/constants/pagination';
 import { titleGenerator } from 'shared/utils/title-generator';
 
@@ -14,17 +13,16 @@ export function IndexPage() {
       <PlpLayout
         pagination={{
           page: 1,
-          siblingCount: 1,
-          totalCount: DATA.length,
-          pageSize: PAGINATION_DATA.PAGE_SIZE
+          count: [].length,
+          limit: PAGINATION_DATA.PAGE_SIZE
         }}
         loading={false}
         onSearch={onSearch}
-        length={DATA.length}
+        length={[].length}
         onPageChange={onPageChange}
         onSortChange={onSortChange}
         title="All Boozt's Products"
-        products={DATA.slice(0, PAGINATION_DATA.PAGE_SIZE)}
+        products={[].slice(0, PAGINATION_DATA.PAGE_SIZE)}
       />
     </main>
   );

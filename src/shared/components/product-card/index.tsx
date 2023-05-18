@@ -7,13 +7,10 @@ interface Props extends GCommonCompnentProperties {
   product: GProduct;
 }
 export function ProductCard({ product }: Props) {
-  const { filename, brand_name, product_name, base_price, actual_price } = product || {};
-  const discountValue = +(+base_price - +actual_price).toFixed(3);
-  const discountPercentage = +((discountValue * 100) / +base_price).toFixed(0);
-
+  const { imageUrl, title, brandName, prices } = product || {};
   return (
     <article
-      title={product_name}
+      title={title}
       className={classNames(
         'bg-white dark:bg-gray-800 w-full flex sm:flex-col',
         styles.ProductCard__container
@@ -26,9 +23,9 @@ export function ProductCard({ product }: Props) {
         )}
       >
         <img
-          src={filename}
+          alt={title}
+          src={imageUrl}
           loading='lazy'
-          alt={product_name}
           className='w-full rounded-md duration-500 scale-75'
         />
       </div>
@@ -36,17 +33,12 @@ export function ProductCard({ product }: Props) {
       <div className='w-full p-4 flex flex-col justify-between sm:-mt-7 dark:bg-gray-800'>
         <div className='mb-4 w-full'>
           <h3 className='font-bold text-md dark:text-gray-300 leading-6 sm:whitespace-nowrap sm:text-ellipsis overflow-hidden'>
-            {product_name}
+            {title}
           </h3>
-          <p className='text-sm text-gray-500 dark:text-gray-300 mt-1'>{brand_name}</p>
+          <p className='text-sm text-gray-500 dark:text-gray-300 mt-1'>{brandName}</p>
         </div>
 
-        <ProductCardPriceBox
-          basePrice={base_price}
-          actualPrice={actual_price}
-          discountValue={discountValue}
-          discountPercentage={discountPercentage}
-        />
+        <ProductCardPriceBox prices={prices} />
       </div>
     </article>
   );

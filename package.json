@@ -14,6 +14,7 @@
     "dev": "yarn run styles && yarn start",
     "check-types": "tsc --pretty --noEmit",
     "lint:fix": "eslint --fix src/**/*.{js,jsx}",
+    "back-end": "php -S localhost:8000 -t server/",
     "build": "yarn build:styles & react-scripts build",
     "dev:windows": "start yarn run styles && yarn start",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",

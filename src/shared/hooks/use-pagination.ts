@@ -10,12 +10,12 @@ const range = (start: number, end: number): number[] => {
 
 export const usePagination = ({
   page,
-  totalCount,
-  pageSize = 10,
+  count,
+  limit = 12,
   siblingCount = 1
 }: GPagination) => {
   const paginationRange = useMemo(() => {
-    const totalPageCount = Math.ceil(totalCount / pageSize);
+    const totalPageCount = Math.ceil(count / limit);
 
     const totalPageNumbers = siblingCount + 5;
 
@@ -49,7 +49,7 @@ export const usePagination = ({
       const middleRange = range(leftSiblingIndex, rightSiblingIndex);
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
     }
-  }, [totalCount, pageSize, siblingCount, page]);
+  }, [count, limit, siblingCount, page]);
 
   return paginationRange || [];
 };

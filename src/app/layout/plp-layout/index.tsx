@@ -4,7 +4,6 @@ import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import qs from 'qs';
 import { ProductCard } from 'shared/components/product-card';
-import { PAGINATION_DATA } from 'shared/constants/pagination';
 import { useScrollPosition } from 'shared/hooks/use-scroll-position';
 import { animator } from 'shared/utils/animator';
 import { debounce } from 'shared/utils/debounce';
@@ -124,7 +123,7 @@ export function PlpLayout({
         <PlpLayoutLoading show={loading} />
 
         {products.map((item) => (
-          <ProductCard key={item.index} product={item} />
+          <ProductCard key={item.id} product={item} />
         ))}
       </div>
 
