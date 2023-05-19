@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 
 import { ProductCardDiscountBadge } from '../product-card-discount-badge';
+import styles from './product-card-price-box.module.scss';
 
 interface Props extends GCommonCompnentProperties {
   prices: GPrice;
@@ -8,14 +9,20 @@ interface Props extends GCommonCompnentProperties {
 export function ProductCardPriceBox({ prices, className }: Props) {
   const { basePrice, actualPrice, discountPercent, discountPrice } = prices || {};
   return (
-    <div className={classNames('flex flex-col relative', className)}>
-      {discountPrice > 0 && (
-        <del className='text-red-500 text-xs -mt-2'>
-          <span className='font-normal mr-1 text-lg'>$</span>
-          {basePrice}
-        </del>
+    <div
+      className={classNames(
+        'flex flex-col relative justify-end',
+        styles.ProductCardPriceBox__container,
+        className
       )}
-      <div className='font-bold text-sm'>
+    >
+      {discountPrice > 0 && (
+        <div className='flex items-center text-red-500'>
+          <span className='font-normal mr-1 text-lg'>$</span>
+          <del className='text-sm'>{basePrice}</del>
+        </div>
+      )}
+      <div className='font-bold text-lg'>
         <span className='font-normal mr-1 text-lg'>$</span>
         {actualPrice}
       </div>

@@ -34,6 +34,8 @@ export function ToggleThemeButton() {
       className='p-2 bg-gray-100 hover:bg-gray-200 rounded-full duration-300 dark:bg-gray-700 dark:hover:bg-gray-900'
     >
       <img
+        width={16}
+        height={16}
         alt='THEME'
         className='invert opacity-90'
         src={isDarkMode ? LIGHT_MODE_IMAGE : DARK_MODE_IMAGE}

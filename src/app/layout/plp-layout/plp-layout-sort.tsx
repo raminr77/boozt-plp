@@ -7,7 +7,7 @@ import { SORT_OPTIONS } from 'shared/constants/sort-options';
 
 import { PlpLayoutSortModal } from './plp-layout-sort-modal';
 
-import SORT_ICON_IMAGE from 'shared/static/images/sort.png';
+import SORT_ICON_IMAGE from 'shared/static/images/sort.svg';
 
 interface Props extends GCommonCompnentProperties {
   onSortChange: (value: number) => void;
@@ -71,10 +71,10 @@ export function PlpLayoutSort({ onSortChange }: Props) {
             key={id}
             onClick={() => sortAction(id)}
             className={classNames(
-              'leading-8 cursor-pointer text-sm px-3 bg-gray-100 dark:bg-gray-700 rounded-lg',
+              'leading-10 cursor-pointer text-sm px-3 bg-gray-100 dark:bg-gray-700 rounded-lg',
               {
                 'text-red-500 font-bold pointer-events-none': defaultSort === id,
-                'dark:text-white hover:bg-gray-200 dark:hover:bg-gray-900':
+                'dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700':
                   defaultSort !== id
               }
             )}

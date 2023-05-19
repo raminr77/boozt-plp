@@ -66,7 +66,7 @@ export function PlpLayout({
         {title}
       </h1>
 
-      <div className='w-full flex flex-col items-center justify-center mb-2 gap-y-12'>
+      <div className='w-full flex flex-col items-center justify-center mb-3 gap-y-12'>
         <PlpLayoutSeachInput onSearch={onSearch} />
 
         <div className='w-full flex items-center justify-between'>
@@ -93,7 +93,7 @@ export function PlpLayout({
 
       <div
         className={classNames(
-          'overflow-hidden w-full border border-solid border-gray-100 dark:border-gray-700 dark:bg-gray-700 bg-gray-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 relative',
+          'overflow-hidden w-full border border-solid border-gray-200 dark:border-gray-600 dark:bg-gray-700 bg-gray-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative',
           styles['PlpLayout__products-container'],
           {
             'pointer-events-none': loading,

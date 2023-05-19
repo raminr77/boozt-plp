@@ -15,11 +15,11 @@
     "check-types": "tsc --pretty --noEmit",
     "lint:fix": "eslint --fix src/**/*.{js,jsx}",
     "back-end": "php -S localhost:8000 -t server/",
-    "build": "yarn build:styles & react-scripts build",
     "dev:windows": "start yarn run styles && yarn start",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "pretty": "prettier --write \"src/**/*.{js,jsx,css,scss}\"",
     "lint:style": "npx stylelint \"src/**/*.{css,scss}\" --allow-empty-input",
+    "build": "yarn build:styles & GENERATE_SOURCEMAP=false react-scripts build",
     "build:styles": "npx tailwindcss -i ./src/shared/styles/index.scss -o ./src/shared/styles/index.min.css --minify",
     "styles": "npx tailwindcss -i ./src/shared/styles/index.scss -o ./src/shared/styles/index.min.css --watch --minify"
   },

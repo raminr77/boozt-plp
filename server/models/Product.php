@@ -24,6 +24,7 @@ class Product
     public function read($apiParams)
     {
         extract($apiParams); // VALUES: q, sort, page, limit (api query string)
+        $acceptable_limit = $limit > 100 ? 100 : $limit;
 
         $sort_query = '';
         $search_query = '';
@@ -50,7 +51,7 @@ class Product
             $total_count = $newProductCountQuery->rowCount();
         }
 
-        $query = 'SELECT * FROM ' . $this->table . $search_query . $sort_query . ' LIMIT ' . (($page - 1) * $limit) . ',' . $limit;
+        $query = 'SELECT * FROM ' . $this->table . $search_query . $sort_query . ' LIMIT ' . (($page - 1) * $acceptable_limit) . ',' . $acceptable_limit;
 
         $data = $this->connection->prepare($query);
         $data->execute();
