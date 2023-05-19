@@ -31,12 +31,13 @@ Currently, You can see this project by [Click Here](http://raminrezaei.ir/boozt-
 - Create a DataBase (Schema) on your MySql with the `boozt_db` name.
 - Load project tables from `product_list.sql` file on the root.
 - Open this directory with your terminal or command line.
+- Make a copy from `.env.example` with a `.env` name on the root.
 - Run `npm install` Or `yarn` for installing dependencies.
 - Run `npm run back-end` to run the back-end project.
 - Run `npm start` in the new terminal for the front-end project.
 - For Development Mode: Run `npm run styles` for tailwindCSS.
-
-- Check `http://localhost:3000` for front-end project and check `http://localhost:8000/api/v1/product.php` for product API.
+- Check `http://localhost:3000` for front-end project
+- Check `http://localhost:8000/api/v1/product.php` for product API.
 
 ### Change DB Config
 
