@@ -23,9 +23,12 @@ class Product
 
     public function read($apiParams)
     {
-        extract($apiParams); // q, sort, page, limit (api query string)
+        extract($apiParams); // VALUES: q, sort, page, limit (api query string)
 
         $sort_query = '';
+        $search_query = '';
+        $total_count = 2000; // STATIC: because it needs an extra query.
+
         // Low Price
         if ($sort == 2) {
             $sort_query = ' ORDER BY actual_price ASC';
@@ -38,10 +41,23 @@ class Product
         if ($sort == 4) {
             $sort_query = ' ORDER BY (base_price - actual_price) DESC';
         }
+        // Search
+        if($q != ''){
+            $search_query = ' WHERE product_name LIKE "%' . $q . '%"';
 
-        $query = 'SELECT * FROM ' . $this->table . $sort_query . ' LIMIT ' . (($page - 1) * $limit) . ',' . $limit;
+            $newProductCountQuery = $this->connection->prepare('SELECT * FROM ' . $this->table . $search_query);
+            $newProductCountQuery->execute();
+            $total_count = $newProductCountQuery->rowCount();
+        }
+
+        $query = 'SELECT * FROM ' . $this->table . $search_query . $sort_query . ' LIMIT ' . (($page - 1) * $limit) . ',' . $limit;
+
         $data = $this->connection->prepare($query);
         $data->execute();
-        return $data;
+
+        return array(
+            'data' => $data,
+            'total_count' => $total_count
+        );
     }
 }

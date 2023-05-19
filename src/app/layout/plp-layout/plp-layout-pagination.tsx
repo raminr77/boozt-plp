@@ -16,7 +16,7 @@ export function PlpLayoutPagination({ onPageChange, pagination }: Props) {
   const buttonClasses =
     'outline-none bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-900 leading-10 rounded-lg px-3 text-sm duration-300';
 
-  if (count <= paginationLimit) {
+  if (count <= paginationLimit || Object.keys(pagination).length === 0) {
     return null;
   }
 

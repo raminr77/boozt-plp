@@ -1,6 +1,10 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Max-Age: 86400');
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
+header('Access-Control-Allow-Methods: GET');
+
 
 include_once '../../config/Database.php';
 include_once '../../models/Product.php';
@@ -17,16 +21,20 @@ $apiParams = array(
     'limit' => intval($_GET['limit'] ?? 12)
 );
 
-$result = $product->read($apiParams);
+$data = $product->read($apiParams);
+
+$result = $data['data'];
 $count = $result->rowCount();
 
 if ($count > 0) {
     $products_arr = array();
     $products_arr['data'] = array();
 
-    $pagination_pages = ceil($count / $apiParams['limit']);
+    $totalCount = $data['total_count'];
+    $products_arr['total_count'] = $totalCount;
+    $pagination_pages = ceil($totalCount / $apiParams['limit']);
     $products_arr['pagination'] = array(
-        'count' => $count,
+        'count' => $totalCount,
         'page' => $apiParams['page'],
         'pages' => $pagination_pages,
         'limit' => $apiParams['limit'],

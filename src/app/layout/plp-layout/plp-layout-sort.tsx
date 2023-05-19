@@ -21,12 +21,14 @@ export function PlpLayoutSort({ onSortChange }: Props) {
   const [defaultSort, setDefaultSort] = useState(+defaultSortId);
 
   const sortAction = (sortId: number) => {
-    onSortChange(sortId);
-    setDefaultSort(sortId);
     setSearchParams({
       ...qs.parse(window.location.search.substring(1)),
+      page: '1',
       sort: sortId.toString()
     });
+    window.scrollTo(0, 200);
+    setDefaultSort(sortId);
+    onSortChange(sortId);
   };
 
   const showSortModal = () => {
@@ -37,10 +39,11 @@ export function PlpLayoutSort({ onSortChange }: Props) {
   };
 
   useEffect(() => {
-    if (searchParams.get('sort')) {
-      const defaultSortId = searchParams.get('sort') || 1;
-      setDefaultSort(+defaultSortId);
+    const currentDefaultSortId = searchParams.get('sort') || 1;
+    if (defaultSort !== currentDefaultSortId) {
+      setDefaultSort(+currentDefaultSortId);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   return (
@@ -64,7 +67,7 @@ export function PlpLayoutSort({ onSortChange }: Props) {
 
       <div className='hidden sm:flex items-center text-sm gap-x-1'>
         {SORT_OPTIONS.map(({ id, title }) => (
-          <label
+          <button
             key={id}
             onClick={() => sortAction(id)}
             className={classNames(
@@ -77,8 +80,7 @@ export function PlpLayoutSort({ onSortChange }: Props) {
             )}
           >
             {title}
-            <input type='radio' name='sort' value={id} hidden />
-          </label>
+          </button>
         ))}
       </div>
 

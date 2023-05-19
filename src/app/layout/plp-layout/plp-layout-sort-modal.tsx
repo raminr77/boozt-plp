@@ -34,7 +34,7 @@ export function PlpLayoutSortModal({
     >
       <div className='bg-gray-100 dark:bg-gray-700 rounded-lg p-4 w-10/12 shadow-lg flex flex-col gap-y-2'>
         {SORT_OPTIONS.map(({ id, title }) => (
-          <label
+          <button
             key={id}
             onClick={() => sortAction(id)}
             className={classNames(
@@ -46,8 +46,7 @@ export function PlpLayoutSortModal({
             )}
           >
             {title}
-            <input type='radio' name='sort' value={id} hidden />
-          </label>
+          </button>
         ))}
       </div>
     </div>
