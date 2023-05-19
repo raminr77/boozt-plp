@@ -18,7 +18,7 @@ $apiParams = array(
     'q' => $_GET['q'] ?? '',
     'sort' => intval($_GET['sort'] ?? 1),
     'page' => intval($_GET['page'] ?? 1),
-    'limit' => intval($_GET['limit'] ?? 12)
+    'limit' => intval($_GET['limit'] ?? 24)
 );
 
 $data = $product->read($apiParams);
@@ -52,9 +52,9 @@ if ($count > 0) {
             'image_url' => $filename,
             'brand_name' => $brand_name,
             'size_detail' => $size_detail,
-            'is_active' => !!$sale_active,
             'product_name' => $product_name,
             'color_detail' => $color_detail,
+            'is_active' => boolval($sale_active),
             'available_sizes' => $available_sizes,
             'prices' => array(
                 'base_price' => floatval($base_price),

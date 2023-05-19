@@ -11,7 +11,7 @@ const range = (start: number, end: number): number[] => {
 export const usePagination = ({
   page,
   count,
-  limit = 12,
+  limit = 24,
   siblingCount = 1
 }: GPagination) => {
   const paginationRange = useMemo(() => {

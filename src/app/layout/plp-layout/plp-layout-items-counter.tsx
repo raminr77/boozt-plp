@@ -8,9 +8,9 @@ export function PlpLayoutItemsCounter({
   pagination: GPagination;
 }) {
   const { page } = pagination || {};
-  const currentItemsNumber = `[ ${PAGINATION_DATA.PAGE_SIZE * page - 11} to ${
-    PAGINATION_DATA.PAGE_SIZE * page
-  } ]`;
+  const currentItemsNumber = `[ ${
+    PAGINATION_DATA.PAGE_SIZE * page - PAGINATION_DATA.PAGE_SIZE + 1
+  } to ${PAGINATION_DATA.PAGE_SIZE * page} ]`;
   return length ? (
     <p className='text-sm text-gray-400'>
       <span className='font-bold'>{`${currentItemsNumber} - ${length}`}</span> Products

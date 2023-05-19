@@ -1,3 +1,3 @@
 export const PAGINATION_DATA = {
-  PAGE_SIZE: 12
+  PAGE_SIZE: 24
 };
