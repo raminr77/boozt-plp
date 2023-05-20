@@ -1,5 +1,6 @@
 import axios from 'axios';
 import QS from 'qs';
+import { BASE_URL } from 'shared/constants/env';
 
 const MAX_REQUEST_PER_SECOND = 10;
 
@@ -10,7 +11,7 @@ let previousAPICallTime = Date.now();
 const $axios = axios.create({
   timeout: 40_000,
   withCredentials: false,
-  baseURL: process.env.REACT_APP_API_BASE_URL,
+  baseURL: BASE_URL,
   headers: {
     Accept: 'application/json',
     'X-Web-Optimize-Response': 1,

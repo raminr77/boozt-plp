@@ -1,6 +1,6 @@
 import { REQUEST_TYPES } from 'shared/constants/request-types';
 
-const LOG_STACK = [];
+export const LOG_STACK: string[] = [];
 
 interface Props {
   method?: GRequestMethod;

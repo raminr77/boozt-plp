@@ -135,5 +135,7 @@ export const animator = ({ name, speed, repeat, delay }: Props): string => {
   const animationDelay = delay ? `animate__delay-${delay}` : '';
   const animationRepeat = repeat ? `animate__repeat-${repeat}` : '';
 
-  return `animate__animated animate__${name} ${animationSpeed} ${animationRepeat} ${animationDelay}`.trim();
+  return `animate__animated animate__${name} ${animationSpeed} ${animationRepeat} ${animationDelay}`
+    .trim()
+    .replace('   ', '');
 };

@@ -1,3 +1,3 @@
-export const isEmpty = (arr: any[] = []): boolean => {
-  return Array.isArray(arr) && !arr.length;
-};
+export function isEmpty<T>(arr: T[]): boolean {
+  return Array.isArray(arr) && arr.length === 0;
+}
