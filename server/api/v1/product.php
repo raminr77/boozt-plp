@@ -11,7 +11,6 @@ include_once '../../models/Product.php';
 
 $database = new Database();
 $db = $database->connect();
-
 $product = new Product($db);
 
 $apiParams = array(
@@ -27,13 +26,15 @@ $result = $data['data'];
 $count = $result->rowCount();
 
 if ($count > 0) {
-    $products_arr = array();
-    $products_arr['data'] = array();
+    $response = array();
+    $response['data'] = array();
 
     $totalCount = $data['total_count'];
-    $products_arr['total_count'] = $totalCount;
+    $response['total_count'] = $totalCount;
+    $response['message'] = 'Your Request Has Been Successfully Done.';
+
     $pagination_pages = ceil($totalCount / $apiParams['limit']);
-    $products_arr['pagination'] = array(
+    $response['pagination'] = array(
         'count' => $totalCount,
         'page' => $apiParams['page'],
         'pages' => $pagination_pages,
@@ -41,7 +42,6 @@ if ($count > 0) {
         'prev_page' => $apiParams['page'] - 1 < 1 ? null : $apiParams['page'] - 1,
         'next_page' => $apiParams['page'] + 1 > $pagination_pages ? null : $apiParams['page'] + 1,
     );
-    $products_arr['message'] = 'Your Request Has Been Successfully Done.';
 
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
@@ -63,10 +63,10 @@ if ($count > 0) {
                 'discount_percent' => round((floatval($discountValue) * 100) / floatval($base_price), 0)
             ),
         );
-        array_push($products_arr['data'], $product_item);
+        array_push($response['data'], $product_item);
     }
 
-    echo json_encode($products_arr);
+    echo json_encode($response);
 } else {
     echo json_encode(
         array('message' => 'No Products Found.', 'data' => array())
