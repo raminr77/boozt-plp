@@ -11,11 +11,6 @@ declare global {
     sizeDetail: string;
     colorDetail: string;
     availableSizes: string;
-    prices: {
-      basePrice: number;
-      actualPrice: number;
-      discountPrice: number;
-      discountPercent: number;
-    };
+    prices: GPrice;
   }
 }

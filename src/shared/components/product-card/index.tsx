@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { Image } from 'shared/components/image';
 
 import { ProductCardPriceBox } from './product-card-price-box';
 import styles from './product-card.module.scss';
@@ -19,7 +20,7 @@ export function ProductCard({ product }: Props) {
           styles['ProductCard__image-container']
         )}
       >
-        <img
+        <Image
           alt={title}
           width='100%'
           height='100%'

@@ -1,8 +1,8 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Link } from 'react-router-dom';
 
 import { clsx } from 'clsx';
 import { CodeBox } from 'shared/components/code-box';
+import { Image } from 'shared/components/image';
 import { PROJECT_GITHUB_PAGE_ROUTE } from 'shared/routes/route-path';
 import { animator } from 'shared/utils/animator';
 import { titleGenerator } from 'shared/utils/title-generator';
@@ -14,6 +14,7 @@ import DOC_IMAGE_4 from 'shared/static/images/documents/4.png';
 import DOC_IMAGE_5 from 'shared/static/images/documents/5.png';
 import DOC_IMAGE_6 from 'shared/static/images/documents/6.png';
 import DOC_IMAGE_7 from 'shared/static/images/documents/7.png';
+import DOC_IMAGE_8 from 'shared/static/images/documents/8.png';
 
 export function DocumentsPage() {
   titleGenerator('Documents');
@@ -65,11 +66,11 @@ export function DocumentsPage() {
           <CodeBox className='my-5'>
             https://sia.codes/posts/making-google-fonts-faster/
           </CodeBox>
-          Also, by Google Chrome's Lighthouse statistics, we have tried to have a more
-          optimal and better CLS. Also, in the beginning, the shadow effect was considered
-          for the product cards, which I realized by checking the statistics, and now the
-          designed page has the best re-rendering and re-painting of the browser and
-          alignment of the elements.
+          Also, by Lighthouse statistics, we have tried to have a more optimal and better
+          CLS. Also, in the beginning, the shadow effect was considered for the product
+          cards, which I realized by checking the statistics, and now the designed page
+          has the best re-rendering and re-painting of the browser and alignment of the
+          elements.
           <CodeBox className='my-5'>
             https://www.sitepoint.com/css-box-shadow-animation-performance/
           </CodeBox>
@@ -84,8 +85,8 @@ export function DocumentsPage() {
         <br />
 
         <div className='w-full grid sm:grid-cols-2 gap-2'>
-          <img alt='' src={DOC_IMAGE_1} className='rounded-md' />
-          <img alt='' src={DOC_IMAGE_2} className='rounded-md' />
+          <Image alt='' src={DOC_IMAGE_1} className='rounded-md' />
+          <Image alt='' src={DOC_IMAGE_2} className='rounded-md' />
         </div>
         <p className='text-center text-gray-400'>
           Fix Layout Shift Regions and Paint Flashing (Before/After)
@@ -93,24 +94,33 @@ export function DocumentsPage() {
         <br />
 
         <div className='w-full grid sm:grid-cols-2 gap-2'>
-          <img alt='' src={DOC_IMAGE_3} className='rounded-md' />
-          <img alt='' src={DOC_IMAGE_4} className='rounded-md' />
+          <Image alt='' src={DOC_IMAGE_3} className='rounded-md' />
+          <Image alt='' src={DOC_IMAGE_4} className='rounded-md' />
         </div>
         <p className='text-center text-gray-400'>Core Web Vitals & Layer Border</p>
         <br />
 
         <div className='w-full grid sm:grid-cols-2 gap-2'>
-          <img alt='' src={DOC_IMAGE_5} className='rounded-md' />
-          <img alt='' src={DOC_IMAGE_6} className='rounded-md' />
+          <Image alt='' src={DOC_IMAGE_5} className='rounded-md' />
+          <Image alt='' src={DOC_IMAGE_6} className='rounded-md' />
         </div>
         <p className='text-center text-gray-400'>Fix Lighthouse Issues (Before/After)</p>
 
         <br />
         <div className='w-full flex items-center justify-center'>
-          <img alt='' src={DOC_IMAGE_7} className='rounded-md max-w-md' />
+          <Image alt='' src={DOC_IMAGE_7} className='rounded-md max-w-md' />
         </div>
         <p className='text-center text-gray-400'>
           Reduce Bundle Size With Replace A Library (Before/After)
+        </p>
+
+        <br />
+        <div className='w-full flex items-center justify-center'>
+          <Image alt='' src={DOC_IMAGE_8} className='rounded-md max-w-3xl' />
+        </div>
+        <p className='text-center text-gray-400'>
+          Development of a custom hook optimized (useReducer) for binary modes and
+          replacement with useState. (Before/After)
         </p>
 
         <h1 className='font-bold'>UI & UX</h1>

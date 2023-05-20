@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { clsx } from 'clsx';
 import qs from 'qs';
+import { Image } from 'shared/components/image';
 import { SORT_OPTIONS } from 'shared/constants/sort-options';
 
 import { PlpLayoutSortModal } from './plp-layout-sort-modal';
@@ -12,7 +13,7 @@ import SORT_ICON_IMAGE from 'shared/static/images/sort.svg';
 interface Props extends GCommonCompnentProperties {
   onSortChange: (value: number) => void;
 }
-export function PlpLayoutSort({ onSortChange }: Props) {
+export function PlpLayoutSort({ onSortChange, className }: Props) {
   const [showModal, setShowModal] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams({});
 
@@ -22,17 +23,17 @@ export function PlpLayoutSort({ onSortChange }: Props) {
 
   const sortAction = (sortId: number) => {
     setSearchParams({
-      ...qs.parse(window.location.search.substring(1)),
+      ...qs.parse(location.search.substring(1)),
       page: '1',
       sort: sortId.toString()
     });
-    window.scrollTo(0, 200);
+    scrollTo(0, 200);
     setDefaultSort(sortId);
     onSortChange(sortId);
   };
 
   const showSortModal = () => {
-    if (window.innerWidth > 640) {
+    if (innerWidth > 640) {
       return;
     }
     setShowModal(true);
@@ -43,16 +44,15 @@ export function PlpLayoutSort({ onSortChange }: Props) {
     if (defaultSort !== currentDefaultSortId) {
       setDefaultSort(+currentDefaultSortId);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   return (
-    <div className='flex items-center'>
+    <div className={clsx('flex items-center', className)}>
       <button
         className='mr-2 flex items-center sm:cursor-default'
         onClick={showSortModal}
       >
-        <img
+        <Image
           alt=''
           width={24}
           height={24}

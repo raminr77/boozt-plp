@@ -1,7 +1,7 @@
 import axios from 'axios';
 import QS from 'qs';
 
-const MAX_REQUEST_PER_SECOND = 20;
+const MAX_REQUEST_PER_SECOND = 10;
 
 let isAPILock = false;
 let requestPerSecondCount = 0;

@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import qs from 'qs';
 import { getIndexPageData } from 'shared/api/product/get-product-data';
+import { PAGINATION_DATA } from 'shared/constants/pagination';
 import { usePageData } from 'shared/hooks/use-page-data';
 import { debounce } from 'shared/utils/debounce';
 import { titleGenerator } from 'shared/utils/title-generator';
@@ -19,12 +20,12 @@ export function IndexPage() {
   const { pending, reload } = usePageData({
     apiMethod: getIndexPageData,
     onSuccess: (response) => setData(response),
-    apiData: qs.parse(window.location.search.substring(1))
+    apiData: qs.parse(location.search.substring(1))
   });
 
-  const onPageChange = () => reload(qs.parse(window.location.search.substring(1)));
-  const onSortChange = () => reload(qs.parse(window.location.search.substring(1)));
-  const onSearch = debounce(() => reload(qs.parse(window.location.search.substring(1))));
+  const onPageChange = () => reload(qs.parse(location.search.substring(1)));
+  const onSortChange = () => reload(qs.parse(location.search.substring(1)));
+  const onSearch = debounce(() => reload(qs.parse(location.search.substring(1))));
 
   return (
     <main>
@@ -36,7 +37,7 @@ export function IndexPage() {
         title="All Boozt's Products"
         length={data?.totalCount || 0}
         products={data?.products || []}
-        pagination={data?.pagination || { page: 1, count: 0 }}
+        pagination={data?.pagination || PAGINATION_DATA.DEFAULT_VALUE}
       />
     </main>
   );

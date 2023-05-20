@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { clsx } from 'clsx';
 import qs from 'qs';
+import { Image } from 'shared/components/image';
 import { animator } from 'shared/utils/animator';
 
 import CLEAN_INPUT_IMAGE from 'shared/static/images/close.png';
@@ -17,7 +18,7 @@ export function PlpLayoutSeachInput({ onSearch, className }: Props) {
 
   const searchAction = (value: string) => {
     setSearchParams({
-      ...qs.parse(window.location.search.substring(1)),
+      ...qs.parse(location.search.substring(1)),
       page: '1',
       q: value
     });
@@ -39,7 +40,7 @@ export function PlpLayoutSeachInput({ onSearch, className }: Props) {
           className={clsx('p-3 absolute right-0 top-0', animator({ name: 'fadeIn' }))}
           onClick={() => searchAction('')}
         >
-          <img
+          <Image
             alt='Clean'
             width={18}
             height={18}
@@ -49,7 +50,7 @@ export function PlpLayoutSeachInput({ onSearch, className }: Props) {
         </button>
       ) : (
         <div className={clsx('p-2 absolute right-0 top-0', animator({ name: 'fadeIn' }))}>
-          <img
+          <Image
             alt='Clean'
             width={26}
             height={26}

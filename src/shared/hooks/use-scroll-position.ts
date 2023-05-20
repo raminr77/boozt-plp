@@ -16,6 +16,12 @@ interface IScrollProps {
   currPos: IPosition;
 }
 
+interface Props {
+  useWindow?: boolean;
+  element?: ElementRef;
+  boundingElement?: ElementRef;
+}
+
 type ElementRef = MutableRefObject<HTMLElement | undefined>;
 
 const useIsomorphicLayoutEffect =
@@ -27,21 +33,13 @@ const zeroPosition = { x: 0, y: 0 };
 
 const getClientRect = (element?: HTMLElement) => element?.getBoundingClientRect();
 
-const getScrollPosition = ({
-  element,
-  useWindow,
-  boundingElement
-}: {
-  element?: ElementRef;
-  boundingElement?: ElementRef;
-  useWindow?: boolean;
-}) => {
+const getScrollPosition = ({ element, useWindow, boundingElement }: Props) => {
   if (!isBrowser) {
     return zeroPosition;
   }
 
   if (useWindow) {
-    return { x: window.scrollX, y: window.scrollY };
+    return { x: scrollX, y: scrollY };
   }
 
   const targetPosition = getClientRect(element?.current || document.body);
@@ -69,7 +67,7 @@ export const useScrollPosition = (
 ): void => {
   const position = useRef(getScrollPosition({ useWindow, boundingElement }));
 
-  let throttleTimeout: number | null = null;
+  let throttleTimeout: ReturnType<typeof setTimeout> | null = null;
 
   const callBack = () => {
     const currPos = getScrollPosition({ element, useWindow, boundingElement });
@@ -86,7 +84,7 @@ export const useScrollPosition = (
     const handleScroll = () => {
       if (wait) {
         if (throttleTimeout === null) {
-          throttleTimeout = window.setTimeout(callBack, wait);
+          throttleTimeout = setTimeout(callBack, wait);
         }
       } else {
         callBack();
@@ -98,14 +96,14 @@ export const useScrollPosition = (
         passive: true
       });
     } else {
-      window.addEventListener('scroll', handleScroll, { passive: true });
+      addEventListener('scroll', handleScroll, { passive: true });
     }
 
     return () => {
       if (boundingElement) {
         boundingElement.current?.removeEventListener('scroll', handleScroll);
       } else {
-        window.removeEventListener('scroll', handleScroll);
+        removeEventListener('scroll', handleScroll);
       }
 
       if (throttleTimeout) {

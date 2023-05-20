@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { clsx } from 'clsx';
+import { Image } from 'shared/components/image';
 import { INDEX_PAGE_ROUTE } from 'shared/routes/route-path';
 import { titleGenerator } from 'shared/utils/title-generator';
 
@@ -18,7 +19,7 @@ export function NotFoundPage() {
       )}
     >
       <div className='flex flex-col'>
-        <img
+        <Image
           width={46}
           height={46}
           src={NOT_FOUND_IMAGE}

@@ -9,7 +9,18 @@ interface apiResponse {
   pagination: GPagination;
 }
 
-export const transformer = ({ data }: any): apiResponse => {
+const priceTransformer = ({ data }: any): GPrice => {
+  const { base_price, actual_price, discount_price, discount_percent } = data || {};
+
+  return {
+    basePrice: base_price,
+    actualPrice: actual_price,
+    discountPrice: discount_price,
+    discountPercent: discount_percent
+  };
+};
+
+const transformer = ({ data }: any): apiResponse => {
   return {
     totalCount: data.total_count,
     products: data.data.map((prod: any) => ({
@@ -22,12 +33,7 @@ export const transformer = ({ data }: any): apiResponse => {
       sizeDetail: prod?.size_detail,
       colorDetail: prod?.color_detail,
       availableSizes: prod?.available_sizes,
-      prices: {
-        basePrice: prod?.prices?.base_price,
-        actualPrice: prod?.prices?.actual_price,
-        discountPrice: prod?.prices?.discount_price,
-        discountPercent: prod?.prices?.discount_percent
-      }
+      prices: priceTransformer({ data: prod?.prices })
     })),
     pagination: data?.pagination || {}
   };
@@ -35,6 +41,5 @@ export const transformer = ({ data }: any): apiResponse => {
 
 export const getIndexPageData = apiRequestObject({
   transformer,
-  url: API_URL,
-  type: REQUEST_TYPES.GET
+  url: API_URL
 });

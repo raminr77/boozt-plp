@@ -3,7 +3,7 @@ import { CancelToken, get, post } from 'shared/services/api';
 
 interface Props {
   url: string;
-  type: GRequestMethod;
+  type?: GRequestMethod;
   transformer: (data: any) => any;
   inputTransformer?: (data: any) => any;
 }

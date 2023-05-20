@@ -1,19 +1,20 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { REQUEST_TYPES } from 'shared/constants/request-types';
-import { INDEX_PAGE_ROUTE, NOT_FOUND_ROUTE } from 'shared/routes/route-path';
 import { serviceGet, servicePost } from 'shared/services/api/initialize';
 import { sendLog } from 'shared/services/log';
-import { redirect } from 'shared/utils/url';
 
-function handleResponse({
-  response,
-  reject,
-  resolve
-}: {
+interface Props {
   response: any;
   reject: (result: any) => void;
   resolve: (result: any) => void;
-}) {
+}
+interface RequestProps {
+  data?: any;
+  url: string;
+  config?: AxiosRequestConfig;
+}
+
+function handleResponse({ response, reject, resolve }: Props) {
   const status = response?.status || response.data?.status || 500;
   const message = response.data?.message || '';
 
@@ -23,7 +24,7 @@ function handleResponse({
       break;
     }
     case 301: {
-      redirect(response?.data?.url || INDEX_PAGE_ROUTE);
+      // REDIRECT TO INDEX
       reject(response);
       break;
     }
@@ -33,7 +34,7 @@ function handleResponse({
       break;
     }
     case 404: {
-      redirect({ url: NOT_FOUND_ROUTE });
+      // REDIRECT TO 404
       reject(response);
       break;
     }
@@ -48,7 +49,7 @@ function handleResponse({
   }
 }
 
-function get({ url, config }: { url: string; config?: AxiosRequestConfig }) {
+function get({ url, config }: RequestProps) {
   return new Promise((resolve, reject) => {
     serviceGet(url, config)
       .then((response: any) => {
@@ -61,15 +62,7 @@ function get({ url, config }: { url: string; config?: AxiosRequestConfig }) {
   });
 }
 
-function post({
-  url,
-  data,
-  config
-}: {
-  data?: any;
-  url: string;
-  config?: AxiosRequestConfig;
-}) {
+function post({ url, data, config }: RequestProps) {
   return new Promise((resolve, reject) => {
     servicePost(url, data, config)
       .then((response) => {

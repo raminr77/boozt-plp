@@ -66,7 +66,7 @@ if ($count > 0) {
         array_push($response['data'], $product_item);
     }
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_INVALID_UTF8_IGNORE);
 } else {
     echo json_encode(
         array('message' => 'No Products Found.', 'data' => array())

@@ -1,5 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const debounce = <T extends Function>(fn: T, ms = 500) => {
+type Func = (...numbers: any[]) => any;
+
+export const debounce = <T extends Func>(fn: T, ms = 500) => {
   let timeoutId: ReturnType<typeof setTimeout>;
 
   return function (this: any, ...args: any[]) {

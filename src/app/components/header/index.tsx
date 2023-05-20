@@ -1,8 +1,9 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { clsx } from 'clsx';
+import { Image } from 'shared/components/image';
 import { MENU_DATA } from 'shared/constants/menu';
+import { useToggle } from 'shared/hooks/use-toggle';
 import { INDEX_PAGE_ROUTE } from 'shared/routes/route-path';
 import { animator } from 'shared/utils/animator';
 
@@ -13,10 +14,10 @@ import MOBILE_CLOSE_MENU_ICON_IMAGE from 'shared/static/images/close.png';
 import MOBILE_MENU_ICON_IMAGE from 'shared/static/images/menu.png';
 
 export function Header() {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useToggle();
 
   const toggleShowMenu = () => {
-    setShowMenu((prevValue) => !prevValue);
+    setShowMenu(!showMenu);
   };
 
   return (
@@ -28,7 +29,7 @@ export function Header() {
     >
       <div className='flex items-center justify-between max-w-screen-2xl w-full px-5 h-14'>
         <Link to={INDEX_PAGE_ROUTE}>
-          <img
+          <Image
             width={137}
             height={30}
             alt='BOOZT LOGO'
@@ -56,7 +57,7 @@ export function Header() {
 
           {/* Mobile Menu Trigger */}
           <button className='block sm:hidden ml-4' onClick={toggleShowMenu}>
-            <img
+            <Image
               alt='MENU'
               width={24}
               height={24}
@@ -71,7 +72,7 @@ export function Header() {
       {showMenu && (
         <div
           className={clsx(
-            'items-center flex text-sm text-gray-400 dark:bg-gray-900 bg-gray-100 w-full justify-center',
+            'items-center flex text-sm text-gray-400 dark:bg-gray-900 bg-gray-100 w-full justify-center sm:hidden',
             animator({ name: 'fadeIn' })
           )}
         >

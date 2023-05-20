@@ -1,30 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
+import { Image } from 'shared/components/image';
 import { LOCAL_STORAGE_NAMES } from 'shared/constants/local-storage';
+import { useToggle } from 'shared/hooks/use-toggle';
 
 import DARK_MODE_IMAGE from 'shared/static/images/moon.svg';
 import LIGHT_MODE_IMAGE from 'shared/static/images/sun.svg';
 
 export function ToggleThemeButton() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, toggleDarkMode] = useToggle();
 
   const toggleTheme = () => {
-    window?.localStorage?.setItem(
-      LOCAL_STORAGE_NAMES.BOOZT_PLP_DARK_MODE,
-      (!isDarkMode).toString()
-    );
-    document?.body?.classList.toggle('dark');
-    setIsDarkMode((prevState) => !prevState);
+    localStorage?.setItem(LOCAL_STORAGE_NAMES.BOOZT_PLP_DARK_MODE, `${!isDarkMode}`);
+    document.body.classList.toggle('dark');
+    toggleDarkMode(!isDarkMode);
   };
 
   useEffect(() => {
     const isDarkModeUser =
-      window?.localStorage?.getItem(LOCAL_STORAGE_NAMES.BOOZT_PLP_DARK_MODE) === 'true';
-    setIsDarkMode(isDarkModeUser);
+      localStorage?.getItem(LOCAL_STORAGE_NAMES.BOOZT_PLP_DARK_MODE) === 'true';
+    toggleDarkMode(isDarkModeUser);
     if (isDarkModeUser) {
-      document?.body?.classList.add('dark');
+      document.body.classList.add('dark');
     } else {
-      document?.body?.classList.remove('dark');
+      document.body.classList.remove('dark');
     }
   }, []);
 
@@ -33,7 +32,7 @@ export function ToggleThemeButton() {
       onClick={toggleTheme}
       className='p-2 bg-gray-100 hover:bg-gray-200 rounded-full duration-300 dark:bg-gray-700 dark:hover:bg-gray-900'
     >
-      <img
+      <Image
         width={16}
         height={16}
         alt='THEME'

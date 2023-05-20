@@ -1,19 +1,18 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { clsx } from 'clsx';
 import qs from 'qs';
 import { ProductCard } from 'shared/components/product-card';
 import { useScrollPosition } from 'shared/hooks/use-scroll-position';
+import { useToggle } from 'shared/hooks/use-toggle';
 import { animator } from 'shared/utils/animator';
+import { isEmpty } from 'shared/utils/is-empty';
 
 import { PlpLayoutItemsCounter } from './plp-layout-items-counter';
 import { PlpLayoutLoading } from './plp-layout-loading';
 import { PlpLayoutPagination } from './plp-layout-pagination';
 import { PlpLayoutSeachInput } from './plp-layout-search-input';
 import { PlpLayoutSort } from './plp-layout-sort';
-import styles from './plp-layout.module.scss';
 
 interface Props extends GCommonCompnentProperties {
   title: string;
@@ -36,15 +35,15 @@ export function PlpLayout({
   onSortChange,
   loading = false
 }: Props) {
-  const [showStickySort, setShowStickySort] = useState(false);
+  const [showStickySort, setShowStickySort] = useToggle(false);
   const [searchParams, setSearchParams] = useSearchParams({});
 
   const pageAction = (page: number) => {
     setSearchParams({
-      ...qs.parse(window.location.search.substring(1)),
+      ...qs.parse(location.search.substring(1)),
       page: page.toString()
     });
-    window.scrollTo(0, 200);
+    scrollTo(0, 200);
     onPageChange(page);
   };
 
@@ -69,7 +68,7 @@ export function PlpLayout({
       <div className='w-full flex flex-col items-center justify-center mb-3 gap-y-12'>
         <PlpLayoutSeachInput onSearch={onSearch} />
 
-        <div className='w-full flex items-center justify-between'>
+        <div className='w-full flex items-center justify-between flex-wrap gap-4'>
           <PlpLayoutSort onSortChange={onSortChange} />
           {length && <PlpLayoutItemsCounter length={length} pagination={pagination} />}
         </div>
@@ -87,17 +86,16 @@ export function PlpLayout({
         </div>
       )}
 
-      {products?.length === 0 && (
+      {isEmpty(products) && (
         <div className='w-full h-80 flex items-center justify-center'>No Products</div>
       )}
 
       <div
         className={clsx(
-          'overflow-hidden w-full border border-solid border-gray-200 dark:border-gray-600 dark:bg-gray-700 bg-gray-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative',
-          styles['PlpLayout__products-container'],
+          'overflow-hidden w-full border border-solid border-gray-200 dark:border-gray-600 dark:bg-gray-700 bg-gray-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative gap-px',
           {
             'pointer-events-none': loading,
-            hidden: products?.length === 0
+            hidden: isEmpty(products)
           }
         )}
       >
