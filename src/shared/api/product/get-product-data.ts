@@ -1,4 +1,3 @@
-import { REQUEST_TYPES } from 'shared/constants/request-types';
 import { apiRequestObject } from 'shared/services/api/request-opject';
 
 const API_URL = '/api/v1/product.php';
