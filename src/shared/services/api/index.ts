@@ -56,7 +56,7 @@ function get({ url, config }: RequestProps) {
         handleResponse({ response, reject, resolve });
       })
       .catch((error: any) => {
-        sendLog({ url, method: REQUEST_TYPES.GET, message: 'GET Request Is Failed.' });
+        sendLog({ url, method: REQUEST_TYPES.GET, message: 'GET Request Failed.' });
         reject(error);
       });
   });
@@ -69,7 +69,7 @@ function post({ url, data, config }: RequestProps) {
         handleResponse({ response, reject, resolve });
       })
       .catch((error) => {
-        sendLog({ url, method: REQUEST_TYPES.POST, message: 'POST Request Is Failed.' });
+        sendLog({ url, method: REQUEST_TYPES.POST, message: 'POST Request Failed.' });
         reject(error);
       });
   });

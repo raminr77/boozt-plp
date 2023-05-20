@@ -1,5 +1,5 @@
 import { EMPTY_OBJECT } from 'shared/constants/objects';
-import { apiRequestObject } from 'shared/services/api/request-opject';
+import { apiRequestObject } from 'shared/services/api/request-object';
 
 const API_URL = '/api/v1/product.php';
 
