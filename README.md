@@ -1,48 +1,78 @@
 # Boozt PLP
 
-Senior Front-end Engineer (WebShop)
+Welcome to Boozt PLP!
 
-### Back-end Stack
+## Backend Stack
 
 - PHP
-- MySql
+- MySQL
 
-### Front-end Stack
+## Frontend Stack
 
 - React
 - Tailwind CSS
-- JS with TypeScript
+- JavaScript with TypeScript
 - SCSS Module System
 
-### Documents
+## Getting Started
 
-You can see more about this project on the `documents` folder on the root.
-[Read More](./documents/README.md)
+### Prerequisites
+
+Make sure you have the following software installed on your system:
+
+- PHP (version > 7.4)
+- MySQL
+- Node.js (version > 18.12)
+- Yarn (recommended) or npm (JavaScript package manager)
+
+### Installation
+
+1. Clone or download the latest version of this project.
+2. Create a new database (schema) in your MySQL instance and name it `boozt_db`.
+3. Import the project tables from the `product_list.sql` file located in the root directory into your database.
+4. Open your terminal or command line and navigate to the project directory.
+5. Create a copy of the `.env.example` file and rename it to `.env` in the root directory.
+6. Install the project dependencies by running the following command:
+
+```shell
+   npm install
+```
+
+7. To run the backend project, execute the following command:
+
+```shell
+   npm run back-end
+```
+
+8. Open a new terminal window and start the frontend project by running:
+
+```shell
+    npm start
+```
+
+9. For development mode, you can run the following command to compile Tailwind CSS styles:
+
+```shell
+    npm run styles
+```
+
+10. Access the frontend project in your browser at http://localhost:3000.
+11. You can access the product API at http://localhost:8000/api/v1/product.php.
+
+### Changing Database Configuration
+
+If you need to change the database configuration (e.g., database name, username, etc.), you can do so by modifying the following file:
+
+```shell
+server/config/Database.php
+```
+
+### Additional Documents
+
+For more detailed information about this project, please refer to the documents folder located in the root directory. You can find additional resources and documentation there.
 
 ### Demo
 
-Currently, You can see this project by [Click Here](http://raminrezaei.ir/boozt-plp/).
+You can check out a live demo of this project by visiting http://boozt-plp.ir/.
 
-### How To Run ...
-
-- You Should have `PHP` > 7.4 and `MySql` on your system.
-- You Should have `NodeJs` > 18.12 with a JavaScript package manager like `Yarn` ( Recommended ) or `npm` on your system.
-- Clone or download the last version of this project.
-- Create a DataBase (Schema) on your MySql with the `boozt_db` name.
-- Load project tables from `product_list.sql` file on the root.
-- Open this directory with your terminal or command line.
-- Make a copy from `.env.example` with a `.env` name on the root.
-- Run `npm install` Or `yarn` for installing dependencies.
-- Run `npm run back-end` to run the back-end project.
-- Run `npm start` in the new terminal for the front-end project.
-- For Development Mode: Run `npm run styles` for tailwindCSS.
-- Check `http://localhost:3000` for front-end project
-- Check `http://localhost:8000/api/v1/product.php` for product API.
-
-### Change DB Config
-
-You can change the database config like `name`, `user` & ...
-
-```
-server/config/Database.php
-```
+Feel free to explore and enjoy the Boozt PLP!
