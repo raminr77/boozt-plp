@@ -26,9 +26,9 @@ class Product
         extract($apiParams); // VALUES: q, sort, page, limit (api query string)
         $acceptable_limit = $limit > 100 ? 100 : $limit;
 
+        $total_count = 0;
         $sort_query = '';
         $search_query = '';
-        $total_count = 2000; // STATIC: because it needs an extra query.
 
         // Low Price
         if ($sort == 2) {
@@ -42,17 +42,33 @@ class Product
         if ($sort == 4) {
             $sort_query = ' ORDER BY (base_price - actual_price) DESC';
         }
+
         // Search
         if($q != ''){
-            $search_query = ' WHERE product_name LIKE "%' . $q . '%"';
+            // `:search` for SQL injection :D
+            $search_query = 'SELECT * FROM ' . $this->table .' WHERE product_name LIKE :search' . $sort_query . ' LIMIT ' . (($page - 1) * $acceptable_limit) . ',' . $acceptable_limit;
+            $searched_data = $this->connection->prepare($search_query);
+            $searched_data->bindValue(':search', '%' . $q . '%');
+            $searched_data->execute();
+            
+            // Count
+            $total_count_query = 'SELECT COUNT(*) FROM ' . $this->table . ' WHERE product_name LIKE :search';
+            $total_count_data = $this->connection->prepare($total_count_query);
+            $total_count_data->bindValue(':search', '%' . $q . '%');
+            $total_count_data->execute();
 
-            $newProductCountQuery = $this->connection->prepare('SELECT * FROM ' . $this->table . $search_query);
-            $newProductCountQuery->execute();
-            $total_count = $newProductCountQuery->rowCount();
+            return array(
+                'data' => $searched_data,
+                'total_count' => intval($total_count_data->fetchColumn())
+            );
+        } else {
+            $total_count_query = 'SELECT COUNT(*) FROM ' . $this->table;
+            $total_count_data = $this->connection->prepare($total_count_query);
+            $total_count_data->execute();
+            $total_count = intval($total_count_data->fetchColumn());
         }
 
         $query = 'SELECT * FROM ' . $this->table . $search_query . $sort_query . ' LIMIT ' . (($page - 1) * $acceptable_limit) . ',' . $acceptable_limit;
-
         $data = $this->connection->prepare($query);
         $data->execute();
 

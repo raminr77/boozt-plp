@@ -13,6 +13,7 @@ $database = new Database();
 $db = $database->connect();
 $product = new Product($db);
 
+// For SQL Injections
 $apiParams = array(
     'q' => $_GET['q'] ?? '',
     'sort' => intval($_GET['sort'] ?? 1),
