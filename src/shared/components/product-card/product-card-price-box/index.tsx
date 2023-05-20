@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { EMPTY_OBJECT } from 'shared/constants/objects';
 
 import { ProductCardDiscountBadge } from '../product-card-discount-badge';
 import styles from './product-card-price-box.module.scss';
@@ -7,7 +8,8 @@ interface Props extends GCommonCompnentProperties {
   prices: GPrice;
 }
 export function ProductCardPriceBox({ prices, className }: Props) {
-  const { basePrice, actualPrice, discountPercent, discountPrice } = prices || {};
+  const { basePrice, actualPrice, discountPercent, discountPrice } =
+    prices || EMPTY_OBJECT;
   return (
     <div
       className={clsx(

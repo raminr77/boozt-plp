@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 import { Image } from 'shared/components/image';
+import { EMPTY_OBJECT } from 'shared/constants/objects';
 
 import { ProductCardPriceBox } from './product-card-price-box';
 import styles from './product-card.module.scss';
@@ -8,7 +9,8 @@ interface Props extends GCommonCompnentProperties {
   product: GProduct;
 }
 export function ProductCard({ product }: Props) {
-  const { imageUrl, title, brandName, prices, sizeDetail, colorDetail } = product || {};
+  const { imageUrl, title, brandName, prices, sizeDetail, colorDetail } =
+    product || EMPTY_OBJECT;
   return (
     <article
       title={title}

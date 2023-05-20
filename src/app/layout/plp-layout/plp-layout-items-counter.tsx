@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { EMPTY_OBJECT } from 'shared/constants/objects';
 import { calculatePageItemsCount } from 'shared/utils/pagination';
 
 interface Props extends GCommonCompnentProperties {
@@ -7,7 +8,7 @@ interface Props extends GCommonCompnentProperties {
 }
 
 export function PlpLayoutItemsCounter({ length, pagination, className }: Props) {
-  const { page } = pagination || {};
+  const { page } = pagination || EMPTY_OBJECT;
   const currentItemsNumber = calculatePageItemsCount(page);
 
   return (

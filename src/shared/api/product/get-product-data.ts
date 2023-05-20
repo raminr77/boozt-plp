@@ -1,3 +1,4 @@
+import { EMPTY_OBJECT } from 'shared/constants/objects';
 import { apiRequestObject } from 'shared/services/api/request-opject';
 
 const API_URL = '/api/v1/product.php';
@@ -9,7 +10,8 @@ interface apiResponse {
 }
 
 const priceTransformer = ({ data }: any): GPrice => {
-  const { base_price, actual_price, discount_price, discount_percent } = data || {};
+  const { base_price, actual_price, discount_price, discount_percent } =
+    data || EMPTY_OBJECT;
 
   return {
     basePrice: base_price,
@@ -34,7 +36,7 @@ const transformer = ({ data }: any): apiResponse => {
       availableSizes: prod?.available_sizes,
       prices: priceTransformer({ data: prod?.prices })
     })),
-    pagination: data?.pagination || {}
+    pagination: data?.pagination || EMPTY_OBJECT
   };
 };
 

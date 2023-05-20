@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { EMPTY_OBJECT } from 'shared/constants/objects';
 import { PAGINATION_DATA } from 'shared/constants/pagination';
 import { DOTS, usePagination } from 'shared/hooks/use-pagination';
 import { isEmpty } from 'shared/utils/is-empty';
@@ -8,7 +9,7 @@ interface Props extends GCommonCompnentProperties {
   onPageChange: (value: number) => void;
 }
 export function PlpLayoutPagination({ onPageChange, pagination }: Props) {
-  const { page, count, limit } = pagination || {};
+  const { page, count, limit } = pagination || EMPTY_OBJECT;
 
   const paginationRange = usePagination(pagination);
   const lastPage = +paginationRange[paginationRange.length - 1];
