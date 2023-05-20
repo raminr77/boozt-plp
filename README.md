@@ -69,7 +69,7 @@ server/config/Database.php
 
 ### Additional Documents
 
-For more detailed information about this project, please refer to the documents folder located in the root directory. You can find additional resources and documentation there.
+For more detailed information about this project, please refer to the documents folder located in the root directory. You can find additional resources and documentation [here](https://github.com/raminr77/boozt-plp/tree/main/documents).
 
 ### Demo
 
