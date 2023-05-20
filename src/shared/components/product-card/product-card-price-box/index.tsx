@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 
 import { ProductCardDiscountBadge } from '../product-card-discount-badge';
 import styles from './product-card-price-box.module.scss';
@@ -10,7 +10,7 @@ export function ProductCardPriceBox({ prices, className }: Props) {
   const { basePrice, actualPrice, discountPercent, discountPrice } = prices || {};
   return (
     <div
-      className={classNames(
+      className={clsx(
         'flex flex-col relative justify-end',
         styles.ProductCardPriceBox__container,
         className

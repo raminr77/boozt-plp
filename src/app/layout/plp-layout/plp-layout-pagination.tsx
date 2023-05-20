@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { PAGINATION_DATA } from 'shared/constants/pagination';
 import { DOTS, usePagination } from 'shared/hooks/use-pagination';
 
@@ -26,7 +26,7 @@ export function PlpLayoutPagination({ onPageChange, pagination }: Props) {
     <div className='flex items-center justify-center mb-10 mt-5 gap-x-2 scale-75 sm:scale-100'>
       <button
         onClick={() => onPageChange(page - 1 > 0 ? page - 1 : 1)}
-        className={classNames(buttonClasses, {
+        className={clsx(buttonClasses, {
           'pointer-events-none opacity-30': page === 1
         })}
       >
@@ -48,7 +48,7 @@ export function PlpLayoutPagination({ onPageChange, pagination }: Props) {
           <button
             key={pageNumber}
             onClick={() => onPageChange(+pageNumber)}
-            className={classNames(numberButtonClasses, {
+            className={clsx(numberButtonClasses, {
               'bg-gray-100 hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-700':
                 page !== pageNumber,
               'hover:bg-red-500 dark:hover:bg-red-500 bg-red-500 dark:bg-red-500 font-bold text-white pointer-events-none':
@@ -62,7 +62,7 @@ export function PlpLayoutPagination({ onPageChange, pagination }: Props) {
 
       <button
         onClick={() => onPageChange(page + 1 > lastPage ? lastPage : page + 1)}
-        className={classNames(buttonClasses, {
+        className={clsx(buttonClasses, {
           'pointer-events-none opacity-30': lastPage === page
         })}
       >

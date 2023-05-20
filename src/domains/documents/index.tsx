@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from 'react-router-dom';
 
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { CodeBox } from 'shared/components/code-box';
 import { PROJECT_GITHUB_PAGE_ROUTE } from 'shared/routes/route-path';
 import { animator } from 'shared/utils/animator';
@@ -20,7 +20,7 @@ export function DocumentsPage() {
   return (
     <main>
       <h1
-        className={classNames(
+        className={clsx(
           'font-bold text-center text-3xl mb-5',
           animator({ name: 'fadeInUp' })
         )}

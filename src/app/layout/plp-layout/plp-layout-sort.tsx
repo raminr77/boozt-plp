@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import qs from 'qs';
 import { SORT_OPTIONS } from 'shared/constants/sort-options';
 
@@ -70,7 +70,7 @@ export function PlpLayoutSort({ onSortChange }: Props) {
           <button
             key={id}
             onClick={() => sortAction(id)}
-            className={classNames(
+            className={clsx(
               'leading-10 cursor-pointer text-sm px-3 bg-gray-100 dark:bg-gray-700 rounded-lg',
               {
                 'text-red-500 font-bold pointer-events-none': defaultSort === id,

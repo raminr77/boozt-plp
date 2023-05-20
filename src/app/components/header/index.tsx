@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { MENU_DATA } from 'shared/constants/menu';
 import { INDEX_PAGE_ROUTE } from 'shared/routes/route-path';
 import { animator } from 'shared/utils/animator';
@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <header
-      className={classNames(
+      className={clsx(
         'w-full border-b border-solid border-gray-200 dark:border-gray-700 shadow-md flex flex-col items-center justify-center',
         animator({ name: 'fadeInDown' })
       )}
@@ -70,7 +70,7 @@ export function Header() {
       {/* Mobile Menu Content */}
       {showMenu && (
         <div
-          className={classNames(
+          className={clsx(
             'items-center flex text-sm text-gray-400 dark:bg-gray-900 bg-gray-100 w-full justify-center',
             animator({ name: 'fadeIn' })
           )}

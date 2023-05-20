@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { INDEX_PAGE_ROUTE } from 'shared/routes/route-path';
 import { titleGenerator } from 'shared/utils/title-generator';
 
@@ -12,7 +12,7 @@ export function NotFoundPage() {
   titleGenerator('Not Found - 404');
   return (
     <main
-      className={classNames(
+      className={clsx(
         'w-full flex items-center justify-center',
         styles.NotFoundPage__container
       )}

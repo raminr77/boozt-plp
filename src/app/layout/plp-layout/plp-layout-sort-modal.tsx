@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { SORT_OPTIONS } from 'shared/constants/sort-options';
 import { animator } from 'shared/utils/animator';
 
@@ -25,7 +25,7 @@ export function PlpLayoutSortModal({
   return show ? (
     <div
       onClick={closeWithOverlay}
-      className={classNames(
+      className={clsx(
         'w-full h-screen fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center',
         animator({ name: 'fadeIn' }),
         styles['PlpLayout__sort-modal-overlay'],
@@ -37,7 +37,7 @@ export function PlpLayoutSortModal({
           <button
             key={id}
             onClick={() => sortAction(id)}
-            className={classNames(
+            className={clsx(
               'w-full leading-10 py-1 bg-gray-200 dark:bg-gray-800 rounded-lg text-sm text-center',
               {
                 'text-red-500 font-bold': defaultSortId === id,

@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import qs from 'qs';
 import { ProductCard } from 'shared/components/product-card';
 import { useScrollPosition } from 'shared/hooks/use-scroll-position';
@@ -58,7 +58,7 @@ export function PlpLayout({
   return (
     <section>
       <h1
-        className={classNames(
+        className={clsx(
           'font-bold text-center text-3xl mb-5',
           animator({ name: 'fadeInUp' })
         )}
@@ -77,7 +77,7 @@ export function PlpLayout({
 
       {showStickySort && (
         <div
-          className={classNames(
+          className={clsx(
             'w-full flex items-center bg-gray-100 dark:bg-gray-700 justify-between fixed max-w-screen-2xl mx-auto z-20 left-0 right-0 top-0 px-5 py-3 shadow-lg',
             animator({ name: 'fadeInDown' })
           )}
@@ -92,7 +92,7 @@ export function PlpLayout({
       )}
 
       <div
-        className={classNames(
+        className={clsx(
           'overflow-hidden w-full border border-solid border-gray-200 dark:border-gray-600 dark:bg-gray-700 bg-gray-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative',
           styles['PlpLayout__products-container'],
           {

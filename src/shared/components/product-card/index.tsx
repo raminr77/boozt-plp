@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 
 import { ProductCardPriceBox } from './product-card-price-box';
 import styles from './product-card.module.scss';
@@ -14,7 +14,7 @@ export function ProductCard({ product }: Props) {
       className='bg-white dark:bg-gray-800 w-full flex sm:flex-col border border-solid border-transparent duration-100 hover:border-gray-400 dark:hover:border-transparent'
     >
       <div
-        className={classNames(
+        className={clsx(
           'w-full h-full flex items-center justify-center bg-white relative overflow-hidden',
           styles['ProductCard__image-container']
         )}
@@ -25,7 +25,7 @@ export function ProductCard({ product }: Props) {
           height='100%'
           loading='lazy'
           src={imageUrl}
-          className={classNames(
+          className={clsx(
             'w-full rounded-md',
             styles['ProductCard__image-container--image']
           )}

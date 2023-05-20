@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import qs from 'qs';
 import { animator } from 'shared/utils/animator';
 
@@ -25,7 +25,7 @@ export function PlpLayoutSeachInput({ onSearch, className }: Props) {
     setSearch(value);
   };
   return (
-    <div className={classNames('relative w-full max-w-xl', className)}>
+    <div className={clsx('relative w-full max-w-xl', className)}>
       <input
         type='text'
         value={search}
@@ -36,10 +36,7 @@ export function PlpLayoutSeachInput({ onSearch, className }: Props) {
 
       {search.length !== 0 ? (
         <button
-          className={classNames(
-            'p-3 absolute right-0 top-0',
-            animator({ name: 'fadeIn' })
-          )}
+          className={clsx('p-3 absolute right-0 top-0', animator({ name: 'fadeIn' }))}
           onClick={() => searchAction('')}
         >
           <img
@@ -51,12 +48,7 @@ export function PlpLayoutSeachInput({ onSearch, className }: Props) {
           />
         </button>
       ) : (
-        <div
-          className={classNames(
-            'p-2 absolute right-0 top-0',
-            animator({ name: 'fadeIn' })
-          )}
-        >
+        <div className={clsx('p-2 absolute right-0 top-0', animator({ name: 'fadeIn' }))}>
           <img
             alt='Clean'
             width={26}
