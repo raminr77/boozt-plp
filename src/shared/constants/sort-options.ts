@@ -13,6 +13,6 @@ export const SORT_OPTIONS = [
   },
   {
     id: 4,
-    title: 'More Discount'
+    title: 'Most Discount'
   }
 ];

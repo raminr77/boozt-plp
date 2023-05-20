@@ -21,8 +21,8 @@ export const usePageData = ({
   apiData = null,
   disabled = false
 }: Properties) => {
-  const [data, setData] = useState(null);
-  const [pending, setPending] = useState(false);
+  const [data, setData] = useState<any>();
+  const [pending, setPending] = useState<boolean>(false);
 
   const fetchData = (params = apiData) => {
     if (!apiMethod || disabled) {

@@ -38,7 +38,7 @@ class Product
         if ($sort == 3) {
             $sort_query = ' ORDER BY actual_price DESC';
         }
-        // More Discount
+        // Most Discount
         if ($sort == 4) {
             $sort_query = ' ORDER BY (base_price - actual_price) DESC';
         }
