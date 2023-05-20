@@ -13,6 +13,7 @@ import DOC_IMAGE_3 from 'shared/static/images/documents/3.png';
 import DOC_IMAGE_4 from 'shared/static/images/documents/4.png';
 import DOC_IMAGE_5 from 'shared/static/images/documents/5.png';
 import DOC_IMAGE_6 from 'shared/static/images/documents/6.png';
+import DOC_IMAGE_7 from 'shared/static/images/documents/7.png';
 
 export function DocumentsPage() {
   titleGenerator('Documents');
@@ -74,8 +75,14 @@ export function DocumentsPage() {
           </CodeBox>
           <CodeBox className='mb-5'>https://web.dev/optimize-cls/</CodeBox>
         </p>
+        <p>
+          Also, by checking the bundle size of the program, a series of changes have been
+          made to reduce its size, including replacing one of the libraries with a
+          similar, smaller sample.
+        </p>
 
         <br />
+
         <div className='w-full grid sm:grid-cols-2 gap-2'>
           <img alt='' src={DOC_IMAGE_1} className='rounded-md' />
           <img alt='' src={DOC_IMAGE_2} className='rounded-md' />
@@ -84,17 +91,27 @@ export function DocumentsPage() {
           Fix Layout Shift Regions and Paint Flashing (Before/After)
         </p>
         <br />
+
         <div className='w-full grid sm:grid-cols-2 gap-2'>
           <img alt='' src={DOC_IMAGE_3} className='rounded-md' />
           <img alt='' src={DOC_IMAGE_4} className='rounded-md' />
         </div>
         <p className='text-center text-gray-400'>Core Web Vitals & Layer Border</p>
         <br />
+
         <div className='w-full grid sm:grid-cols-2 gap-2'>
           <img alt='' src={DOC_IMAGE_5} className='rounded-md' />
           <img alt='' src={DOC_IMAGE_6} className='rounded-md' />
         </div>
         <p className='text-center text-gray-400'>Fix Lighthouse Issues (Before/After)</p>
+
+        <br />
+        <div className='w-full flex items-center justify-center'>
+          <img alt='' src={DOC_IMAGE_7} className='rounded-md max-w-md' />
+        </div>
+        <p className='text-center text-gray-400'>
+          Reduce Bundle Size With Replace A Library (Before/After)
+        </p>
 
         <h1 className='font-bold'>UI & UX</h1>
         <p>

@@ -31,7 +31,7 @@ export function PlpLayoutSeachInput({ onSearch, className }: Props) {
         value={search}
         onChange={({ target }) => searchAction(target.value)}
         placeholder='Search For What You Like In Boozt ...'
-        className='w-full text-center text-xl outline-none border-2 bg-transparent dark:text-white focus:border-black dark:focus:border-white leading-10 border-solid border-gray-300 dark:border-gray-600'
+        className='w-full text-center text-sm sm:text-md outline-none border-2 bg-transparent dark:text-white focus:border-black dark:focus:border-white leading-10 border-solid border-gray-300 dark:border-gray-600'
       />
 
       {search.length !== 0 ? (

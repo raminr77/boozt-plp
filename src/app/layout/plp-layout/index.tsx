@@ -71,7 +71,7 @@ export function PlpLayout({
 
         <div className='w-full flex items-center justify-between'>
           <PlpLayoutSort onSortChange={onSortChange} />
-          <PlpLayoutItemsCounter length={length} pagination={pagination} />
+          {length && <PlpLayoutItemsCounter length={length} pagination={pagination} />}
         </div>
       </div>
 
@@ -83,7 +83,7 @@ export function PlpLayout({
           )}
         >
           <PlpLayoutSort onSortChange={onSortChange} />
-          <PlpLayoutItemsCounter length={length} pagination={pagination} />
+          {length && <PlpLayoutItemsCounter length={length} pagination={pagination} />}
         </div>
       )}
 
@@ -101,7 +101,7 @@ export function PlpLayout({
           }
         )}
       >
-        <PlpLayoutLoading show={loading} />
+        {loading && <PlpLayoutLoading />}
 
         {products.map((item) => (
           <ProductCard key={item.id} product={item} />

@@ -26,7 +26,7 @@ export function ProductCardPriceBox({ prices, className }: Props) {
         <span className='font-normal mr-1 text-lg'>$</span>
         {actualPrice}
       </div>
-      <ProductCardDiscountBadge value={discountPercent || 0} />
+      {discountPercent > 0 && <ProductCardDiscountBadge value={discountPercent || 0} />}
     </div>
   );
 }

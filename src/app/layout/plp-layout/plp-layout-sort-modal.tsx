@@ -22,7 +22,11 @@ export function PlpLayoutSortModal({
     onClose();
   };
 
-  return show ? (
+  if (!show) {
+    return null;
+  }
+
+  return (
     <div
       onClick={closeWithOverlay}
       className={clsx(
@@ -50,5 +54,5 @@ export function PlpLayoutSortModal({
         ))}
       </div>
     </div>
-  ) : null;
+  );
 }
