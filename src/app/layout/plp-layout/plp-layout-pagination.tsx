@@ -10,7 +10,7 @@ interface Props extends GCommonCompnentProperties {
 export function PlpLayoutPagination({ onPageChange, pagination }: Props) {
   const { page, count, limit } = pagination || {};
 
-  const paginationRange = usePagination(pagination) || [];
+  const paginationRange = usePagination(pagination);
   const lastPage = +paginationRange[paginationRange.length - 1];
 
   const paginationLimit = limit || PAGINATION_DATA.PAGE_SIZE;
