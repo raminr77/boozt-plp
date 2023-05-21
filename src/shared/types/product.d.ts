@@ -11,6 +11,7 @@ declare global {
     sizeDetail: string;
     colorDetail: string;
     availableSizes: string;
+
     prices: GPrice;
   }
 }

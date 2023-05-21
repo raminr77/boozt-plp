@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { PAGE_ROUTES } from 'shared/routes/page-routes';
-import { INDEX_PAGE_ROUTE, NOT_FOUND_ROUTE } from 'shared/routes/route-path';
+import { NOT_FOUND_ROUTE } from 'shared/routes/route-path';
 import { ScrollToTop } from 'shared/routes/scroll-to-top';
 
 import { MainLayout } from 'app/layout/main-layout';

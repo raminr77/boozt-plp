@@ -30,15 +30,15 @@ class Product
         $sort_query = '';
         $search_query = '';
 
-        // Low Price
+        // Lowest Price
         if ($sort == 2) {
             $sort_query = ' ORDER BY actual_price ASC';
         }
-        // High Price
+        // Highest Price
         if ($sort == 3) {
             $sort_query = ' ORDER BY actual_price DESC';
         }
-        // Most Discount
+        // Highest Discount
         if ($sort == 4) {
             $sort_query = ' ORDER BY (base_price - actual_price) DESC';
         }
@@ -51,7 +51,7 @@ class Product
             $searched_data->bindValue(':search', '%' . $q . '%');
             $searched_data->execute();
             
-            // Count
+            // Total Count
             $total_count_query = 'SELECT COUNT(*) FROM ' . $this->table . ' WHERE product_name LIKE :search';
             $total_count_data = $this->connection->prepare($total_count_query);
             $total_count_data->bindValue(':search', '%' . $q . '%');

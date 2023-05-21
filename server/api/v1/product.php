@@ -32,6 +32,7 @@ if ($count > 0) {
 
     $totalCount = $data['total_count'];
     $response['total_count'] = $totalCount;
+
     $response['message'] = 'Your Request Has Been Successfully Done.';
 
     $pagination_pages = ceil($totalCount / $apiParams['limit']);

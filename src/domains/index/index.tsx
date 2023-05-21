@@ -19,7 +19,7 @@ export function IndexPage() {
 
   const onPageChange = () => reload(qs.parse(location.search.substring(1)));
   const onSortChange = () => reload(qs.parse(location.search.substring(1)));
-  const onSearch = debounce(() => reload(qs.parse(location.search.substring(1))));
+  const onSearch = debounce(() => reload(qs.parse(location.search.substring(1))), 1000);
 
   return (
     <main>
