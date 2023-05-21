@@ -23,7 +23,6 @@ export function Routes() {
             <Route key={id} path={path} element={element} />
           ))}
           <Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
-          <Route path='/' element={<Navigate to={INDEX_PAGE_ROUTE} />} />
           <Route path='*' element={<Navigate to={NOT_FOUND_ROUTE} />} />
         </Switch>
       </MainLayout>
