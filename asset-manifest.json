@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/boozt-plp/static/css/main.7dcc3b97.css",
-    "main.js": "/boozt-plp/static/js/main.55491c71.js",
+    "main.js": "/boozt-plp/static/js/main.fb75f6bb.js",
     "static/js/27.55b0fe1e.chunk.js": "/boozt-plp/static/js/27.55b0fe1e.chunk.js",
     "static/media/1.png": "/boozt-plp/static/media/1.7a21dded441e01756ff0.png",
     "static/media/4.png": "/boozt-plp/static/media/4.8f0d3a2ad5ed0630dc98.png",
@@ -20,6 +20,6 @@
   },
   "entrypoints": [
     "static/css/main.7dcc3b97.css",
-    "static/js/main.55491c71.js"
+    "static/js/main.fb75f6bb.js"
   ]
 }
