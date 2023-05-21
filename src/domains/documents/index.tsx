@@ -214,6 +214,17 @@ export function DocumentsPage() {
           I believe that thoughts are complementary. Please feel free to share your
           comments and suggestions in the issues section of this project on GitHub.
         </p>
+        <p>Also, you can send me an email.</p>
+        <div>
+          Email:
+          <Link
+            target='blank'
+            to='mailto:info@boozt-plp.ir'
+            className='text-sky-500 ml-2'
+          >
+            info@boozt-plp.ir
+          </Link>
+        </div>
         <Link
           target='blank'
           className='text-sky-500'

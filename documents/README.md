@@ -73,6 +73,10 @@ The implementation of this project prioritizes delivering a user interface that 
 ## Your Comments & Suggestions
 
 This project was completed as a temporary employment and technical task. However, the main objective of all my projects is to learn new things and improve myself. I eagerly welcome even the smallest suggestions or ideas because I believe that thoughts are complementary. Please feel free to share your comments and suggestions in the issues section of this project on GitHub.
+<br />
+Also, you can send me an email.
+
+[info@boozt-plp.ir](mailto:info@boozt-plp.ir)
 
 [Issues Page](https://github.com/raminr77/boozt-plp/issues)
 
