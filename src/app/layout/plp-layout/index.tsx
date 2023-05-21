@@ -71,7 +71,9 @@ export function PlpLayout({
 
         <div className='w-full flex items-center justify-between flex-wrap gap-4'>
           <PlpLayoutSort onSortChange={onSortChange} />
-          {length && <PlpLayoutItemsCounter length={length} pagination={pagination} />}
+          {length > 0 && (
+            <PlpLayoutItemsCounter length={length} pagination={pagination} />
+          )}
         </div>
       </div>
 
@@ -83,7 +85,9 @@ export function PlpLayout({
           )}
         >
           <PlpLayoutSort onSortChange={onSortChange} />
-          {length && <PlpLayoutItemsCounter length={length} pagination={pagination} />}
+          {length > 0 && (
+            <PlpLayoutItemsCounter length={length} pagination={pagination} />
+          )}
         </div>
       )}
 

@@ -2,7 +2,6 @@ import { clsx } from 'clsx';
 import { EMPTY_OBJECT } from 'shared/constants/objects';
 import { PAGINATION_DATA } from 'shared/constants/pagination';
 import { DOTS, usePagination } from 'shared/hooks/use-pagination';
-import { isEmpty } from 'shared/utils/is-empty';
 
 interface Props extends GCommonCompnentProperties {
   pagination: GPagination;
@@ -20,7 +19,7 @@ export function PlpLayoutPagination({ onPageChange, pagination }: Props) {
   const buttonClasses =
     'outline-none bg-gray-100 hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-700 leading-10 rounded-lg px-3 text-sm duration-300';
 
-  if (count <= paginationLimit || isEmpty(Object.keys(pagination))) {
+  if (count <= paginationLimit || !count) {
     return null;
   }
 

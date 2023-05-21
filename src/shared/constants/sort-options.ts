@@ -5,14 +5,14 @@ export const SORT_OPTIONS = [
   },
   {
     id: 2,
-    title: 'Low Price'
+    title: 'Lowest Price'
   },
   {
     id: 3,
-    title: 'High Price'
+    title: 'Highest Price'
   },
   {
     id: 4,
-    title: 'Most Discount'
+    title: 'Highest Discount'
   }
 ];

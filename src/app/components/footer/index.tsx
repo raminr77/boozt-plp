@@ -9,7 +9,7 @@ export function Footer() {
         to={BOOZT_WEB_PAGE_ROUTE}
         className='text-sm hover:text-black dark:hover:text-white duration-500 font-bold'
       >
-        BOOZT-PLP.COM
+        BOOZT-PLP.IR
       </Link>
       <p className='text-sm mt-1'>Senior Front-end Task - WebShop</p>
     </footer>

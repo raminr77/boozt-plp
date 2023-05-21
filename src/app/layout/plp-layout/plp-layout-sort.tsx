@@ -65,7 +65,7 @@ export function PlpLayoutSort({ onSortChange, className }: Props) {
         </span>
       </button>
 
-      <div className='hidden sm:flex items-center text-sm gap-x-1'>
+      <div className='hidden sm:flex items-center gap-x-1'>
         {SORT_OPTIONS.map(({ id, title }) => (
           <button
             key={id}
