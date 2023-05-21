@@ -73,6 +73,6 @@ For more detailed information about this project, please refer to the documents 
 
 ### Demo
 
-You can check out a live demo of this project by visiting http://boozt-plp.ir/.
+You can check out a live demo of this project by visiting https://boozt-plp.ir/.
 
 Feel free to explore and enjoy the Boozt PLP!
