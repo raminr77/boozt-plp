@@ -57,9 +57,31 @@ The code provided demonstrates the development of a custom hook called useToggle
 
 By utilizing the useToggle hook, you can easily manage binary mode state within your components, providing a clean and optimized solution for handling toggling functionality. This project also includes other types of hooks, each designed with attention to detail and optimized for performance.
 
+## Images
+
+In this project, the `loading` parameter with the value of `lazy` has been added to all the images. This parameter is an attribute available in modern browsers that provides a way to control the loading behavior of images. By setting the `loading` attribute to `lazy`, we aim to achieve two main benefits:
+
+1. Faster Initial Page Load: By deferring the loading of images until they are about to come into the viewport, the page can load faster initially. This is because the browser prioritizes the loading of visible content, such as text and critical resources, before loading the images. As a result, users can start interacting with the page more quickly, improving the overall user experience.
+2. On-Demand Image Loading: With `loading="lazy"`, the browser will load the images progressively as the user scrolls and approaches the area where the images are displayed. This ensures that images are loaded only when they are actually needed, conserving bandwidth and reducing unnecessary network requests. By loading product images dynamically as users see them, we optimize the performance of the product listing and enhance the overall speed and responsiveness of the website.
+
+By leveraging the loading parameter with the value of lazy, we aim to optimize the loading performance of the project, enabling faster initial page load and efficient on-demand image loading. This approach contributes to a better user experience, improved loading times, and overall optimization of the project.
+
 ## UI & UX
 
 The implementation of this project prioritizes delivering a user interface that embodies trust and simplicity. Measures have been taken to ensure that users feel confident and at ease while interacting with the application. One notable feature is the fixed sort bar, which remains visible to the user even while scrolling through the product list. This provides easy access to sorting options at all times, enhancing the overall user experience. Additionally, a smooth transition has been implemented to automatically scroll the user back to the top of the list after changing the pagination. This subtle yet effective enhancement allows users to navigate through the product catalog seamlessly without losing their place or feeling disoriented. By considering such details, the project aims to provide a pleasant and intuitive user experience that promotes ease of use and engagement. The goal is to create an interface that fosters trust, simplicity, and seamless usability, ensuring that users can effortlessly explore and find the products they desire.
+
+## My Config (ESLint, Prettier, CommitLint, Husky, ...)
+
+In this project, the following tools have been configured to enhance the development process:
+
+- ESLint: Used for static code analysis and enforcing coding standards.
+- Prettier: Ensures consistent code formatting throughout the project.
+- Commitlint: Enforces commit message conventions for a cleaner commit history.
+- Husky: Enables automation of tasks before or after Git events.
+- lint-staged: Runs linters on staged files to catch issues before committing them.
+
+These tools contribute to maintaining code quality, consistent formatting, and
+organized commit history in the project.
 
 ## Project Stack
 

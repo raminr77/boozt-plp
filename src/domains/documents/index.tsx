@@ -44,7 +44,7 @@ export function DocumentsPage() {
           like React-Query could have been employed for structuring requests on the
           front-end side, this project opted for custom hooks and request structures.
         </p>
-
+        <br />
         <h1 className='font-bold'>Folder Structure</h1>
         <p>
           The project follows a feature-sliced design for organizing folders and files.
@@ -54,7 +54,7 @@ export function DocumentsPage() {
         </p>
         <p>For more details on feature-sliced design, refer to the following resource:</p>
         <CodeBox>https://feature-sliced.design/</CodeBox>
-
+        <br />
         <h1 className='font-bold'>Performance</h1>
         <p>
           To ensure optimal performance and deliver an excellent user experience, various
@@ -105,6 +105,7 @@ export function DocumentsPage() {
           <Image alt='' src={DOC_IMAGE_3} className='rounded-md' />
           <Image alt='' src={DOC_IMAGE_4} className='rounded-md' />
         </div>
+        <br />
         <br />
 
         <h1 className='font-bold'>Core Web Vitals & Layer Border</h1>
@@ -177,7 +178,40 @@ export function DocumentsPage() {
           functionality. This project also includes other types of hooks, each designed
           with attention to detail and optimized for performance.
         </p>
-
+        <br />
+        <h1 className='font-bold'>Images</h1>
+        <p>
+          In this project, the `loading` parameter with the value of `lazy` has been added
+          to all the images. This parameter is an attribute available in modern browsers
+          that provides a way to control the loading behavior of images. By setting the
+          `loading` attribute to `lazy`, we aim to achieve two main benefits:
+        </p>
+        <ul className='list-disc ml-5'>
+          <li>
+            Faster Initial Page Load: By deferring the loading of images until they are
+            about to come into the viewport, the page can load faster initially. This is
+            because the browser prioritizes the loading of visible content, such as text
+            and critical resources, before loading the images. As a result, users can
+            start interacting with the page more quickly, improving the overall user
+            experience.
+          </li>
+          <li>
+            On-Demand Image Loading: With loading=lazy, the browser will load the images
+            progressively as the user scrolls and approaches the area where the images are
+            displayed. This ensures that images are loaded only when they are actually
+            needed, conserving bandwidth and reducing unnecessary network requests. By
+            loading product images dynamically as users see them, we optimize the
+            performance of the product listing and enhance the overall speed and
+            responsiveness of the website.
+          </li>
+        </ul>
+        <p>
+          By leveraging the loading parameter with the value of lazy, we aim to optimize
+          the loading performance of the project, enabling faster initial page load and
+          efficient on-demand image loading. This approach contributes to a better user
+          experience, improved loading times, and overall optimization of the project.
+        </p>
+        <br />
         <h1 className='font-bold'>UI & UX</h1>
         <p>
           The implementation of this project prioritizes delivering a user interface that
@@ -195,7 +229,31 @@ export function DocumentsPage() {
           simplicity, and seamless usability, ensuring that users can effortlessly explore
           and find the products they desire.
         </p>
-
+        <br />
+        <h1 className='font-bold'>
+          My Config (ESLint, Prettier, CommitLint, Husky, ...)
+        </h1>
+        <p>
+          In this project, the following tools have been configured to enhance the
+          development process:
+        </p>
+        <ul className='list-disc ml-5'>
+          <li>ESLint: Used for static code analysis and enforcing coding standards.</li>
+          <li>Prettier: Ensures consistent code formatting throughout the project.</li>
+          <li>
+            Commitlint: Enforces commit message conventions for a cleaner commit history.
+          </li>
+          <li>Husky: Enables automation of tasks before or after Git events.</li>
+          <li>
+            lint-staged: Runs linters on staged files to catch issues before committing
+            them.
+          </li>
+        </ul>
+        <p>
+          These tools contribute to maintaining code quality, consistent formatting, and
+          organized commit history in the project.
+        </p>
+        <br />
         <h1 className='font-bold'>Project Stack</h1>
         <ul className='list-disc ml-5'>
           <li>PHP</li>
@@ -205,7 +263,7 @@ export function DocumentsPage() {
           <li>SCSS Module System</li>
           <li>JavaScript with TypeScript</li>
         </ul>
-
+        <br />
         <h1 className='font-bold'>Your Comments & Suggestions</h1>
         <p>
           This project was completed as a temporary employment and technical task.

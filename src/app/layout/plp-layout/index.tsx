@@ -13,6 +13,7 @@ import { PlpLayoutLoading } from './plp-layout-loading';
 import { PlpLayoutPagination } from './plp-layout-pagination';
 import { PlpLayoutSeachInput } from './plp-layout-search-input';
 import { PlpLayoutSort } from './plp-layout-sort';
+import styles from './plp-layout.module.scss';
 
 interface Props extends GCommonCompnentProperties {
   title: string;
@@ -86,16 +87,18 @@ export function PlpLayout({
         </div>
       )}
 
-      {isEmpty(products) && (
+      {isEmpty(products) && !loading && (
         <div className='w-full h-80 flex items-center justify-center'>No Products</div>
       )}
 
       <div
         className={clsx(
-          'overflow-hidden w-full border border-solid border-gray-200 dark:border-gray-600 dark:bg-gray-700 bg-gray-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative gap-px',
+          'overflow-hidden w-full border border-solid border-gray-200 dark:border-gray-600 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative gap-px',
+          styles['PlpLayout__products-container'],
           {
             'pointer-events-none': loading,
-            hidden: isEmpty(products)
+            hidden: isEmpty(products) && !loading,
+            'dark:bg-gray-700 bg-gray-100': !isEmpty(products) && !loading
           }
         )}
       >
